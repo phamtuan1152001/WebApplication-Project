@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import HomePage from "./components/pages/Home";
 import ProductsPage from "./components/pages/Products";
 import ServicesPage from "./components/pages/Services";
@@ -18,6 +19,7 @@ function App() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/contact" element={<ContactPage />} />
         </Routes>
+        <Footer/>
       </Router>
     </>
   );
