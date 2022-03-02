@@ -1,10 +1,10 @@
 import React from "react";
-
+import Slider from "./Slider/Slider";
 function Home() {
   return (
-    <div>
-      <h1>Home page-IITIIU19062-SONGTUAN</h1>
-    </div>
+    <>
+      <Slider/>
+    </>
   );
 }
 
