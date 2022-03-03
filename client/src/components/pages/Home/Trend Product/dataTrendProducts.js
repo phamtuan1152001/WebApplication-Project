@@ -16,7 +16,7 @@ const products = [
   },
   {
     img: "https://imquocbao.github.io/Rubix-Fashion/img/product/17_1-copy-600x745.jpg",
-    name: "Neocro backpack in canvas",
+    name: "Neocro backpack canvas",
     price: "$259.00",
   },
   {
