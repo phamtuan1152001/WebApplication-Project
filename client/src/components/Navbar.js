@@ -15,10 +15,10 @@ function Navbar() {
       <div className="navbar">
         <div className="navbar-container container">
           <div>
-            <link to="/" className="navbar-logo">
+            <Link to="/" className="navbar-logo">
               <HiOutlineShoppingBag className="navbar-icon" />
-            
-            </link>
+           </Link> 
+
           </div>
           <div className="nav">
             <ul className={click ? "nav-menu active" : "nav-menu"}>
