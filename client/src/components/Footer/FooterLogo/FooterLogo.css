@@ -1,0 +1,18 @@
+.logo-footer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    text-align: center;
+}
+.logo-footer-container h1 {
+    color: #fff;
+    margin-bottom: 18px;
+}
+.logo-footer span {
+    margin-right: 25px;
+    font-size: 30px;
+    color: #fff;
+} 

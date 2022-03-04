@@ -1,0 +1,19 @@
+.footer-infor-container {
+    /* background-color: orange; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+.footer-infor-item h3 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+.footer-infor-item ul li {
+    list-style: none;
+    color: #999999;
+    margin-bottom: 14px;
+}
