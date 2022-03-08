@@ -1,0 +1,26 @@
+.products-list-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 18px 20px 18px;
+    padding: 30px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 8px 8px 25px -4px rgb(187, 183, 183);
+    transition: 0.5s;
+    position: relative;
+}
+.img-products {
+    height: 250px;
+    width: 100%;
+}
+.products-list-item h3 {
+    margin: 18px 0 8px 0;
+    font-size: 21px;
+}
+.products-list-item p {
+    color: #666;
+    font-size: 18px;
+}
+
