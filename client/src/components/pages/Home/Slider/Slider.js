@@ -59,6 +59,7 @@ function Slider() {
               >
                 <img
                   src={process.env.PUBLIC_URL + `/image/img${index + 1}.jpg`}
+                  alt={""}
                 />
               </div>
             );

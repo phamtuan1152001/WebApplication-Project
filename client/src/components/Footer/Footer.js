@@ -22,7 +22,7 @@ function Footer() {
           <div>
             <img
               src="https://imquocbao.github.io/Rubix-Fashion/img/icon/payment.png"
-              alt="image-powered"
+              alt="hinh-anh-powered"
             />
           </div>
         </div>
