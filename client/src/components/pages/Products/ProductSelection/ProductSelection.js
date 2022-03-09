@@ -1,6 +1,6 @@
 import React from "react";
 import "./ProductSelection.css";
-function ProductSelection() {
+function ProductSelection({ selection }) {
   return (
     <>
       <div className="products-selection-item">
