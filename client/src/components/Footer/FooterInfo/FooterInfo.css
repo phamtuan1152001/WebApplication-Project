@@ -17,3 +17,18 @@
     color: #999999;
     margin-bottom: 14px;
 }
+@media screen and (max-width: 600px) {
+    .footer-infor-container {
+        width: 50%;
+    }
+    .footer-infor-item ul li {
+        font-size: 13px;
+    }
+    .footer-infor-item {
+        text-align: center;
+    }
+    .footer-infor-item h3 {
+        margin-bottom: 18px;
+        font-size: 15px;
+    }
+}

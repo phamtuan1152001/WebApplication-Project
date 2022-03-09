@@ -35,3 +35,21 @@
     color: #666;
     margin: 20px 0 20px 0;
 }
+@media screen and (max-width: 600px) {
+    .subcribe-container {
+        padding: 30px 0px 30px 0px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .subcribe-form {
+        width: 90%;
+        height: 350px;
+    }
+    .subcribe-form-item h2 {
+        font-size: 25px;
+    }
+    .subcribe-form-item p {
+        font-size: 15px;
+        margin: 10px 0 12px 0;
+    }
+}

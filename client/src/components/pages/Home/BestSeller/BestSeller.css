@@ -33,9 +33,29 @@
     cursor: pointer;
 }
 .img-best-seller {
-    height: 100%;
+    height: 350px;
     width: 100%;
     transition: 0.5s;
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
+}
+@media screen and (max-width: 600px) {
+    .best-seller-title {
+        margin: 10px 0 10px 0;
+    }
+    .best-seller-container {
+        grid-template-columns: 50% 50%;
+        grid-template-rows: auto;
+        width: 85%;
+        margin-top: 0px;
+    }
+    .img-best-seller {
+        height: 280px;
+    }
+    .best-seller-list h3 {
+        margin: 13px 0 5px 0;
+    }   
+    .best-seller-list {
+        padding: 0;
+    }
 }
