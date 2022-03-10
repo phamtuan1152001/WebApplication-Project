@@ -56,16 +56,17 @@ function Navbar() {
               )}
             </li> */}
             </ul>
-          </div>
+         </div>
           <div className="sub-nav">
             <div className="log-reg">
-              <Link to="/" className="Login-link"> <i class="fa-solid fa-user"></i> &nbsp; Login /  </Link>
-              <Link to="/" className="Register-link"> Register &emsp;</Link>
+              <Link to="/" className="subnav-links"> <i class="fa-solid fa-user"></i> &nbsp; Login /</Link>
+              <Link to="/" className="subnav-links"> Register &emsp;</Link>
               </div>
               <div className="search-icon">
-               | <button className="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+               | <button className="search-btn"></button>
                 </div>
-            </div>
+            
+           </div>
           <div className="menu-icon" onClick={handleClick}>
             {click ? <FaTimes /> : <FaBars />}
           </div>
