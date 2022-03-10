@@ -32,3 +32,14 @@
     cursor: pointer;
     transition: 0.5s;
 }
+@media screen and (max-width: 600px) {
+    .form-control {
+        width: 100%;
+    }
+    .form-control label input {
+        width: 300px;
+    }
+    .form-control button {
+        width: 120px;
+    }
+}

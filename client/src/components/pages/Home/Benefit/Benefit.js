@@ -8,7 +8,7 @@ function Benefit() {
     <div className="benefits-container">
       {benefits.map((benefit, index) => (
         <div key={index} className="benefits-item">
-          <img src={benefit.img} />
+          <img src={benefit.img} alt={benefit.h4} />
           <h4>{benefit.h4}</h4>
           <p>{benefit.p}</p>
           <Link to="/">

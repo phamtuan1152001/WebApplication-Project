@@ -29,3 +29,20 @@
 .footer-powered p strong {
     color: #fff;
 }
+@media screen and (max-width: 600px) {
+    .footer-container {
+        margin-top: 10px;
+    }
+    .footer-item {
+        padding-top: 30px;
+        padding-bottom: 25px;
+    }
+    .footer-item-2 {
+        flex-direction: column-reverse;
+
+    }
+    .footer-powered p {
+        font-size: 15px;
+        margin-top: 20px;
+    }
+}

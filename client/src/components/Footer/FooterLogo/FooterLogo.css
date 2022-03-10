@@ -16,3 +16,15 @@
     font-size: 30px;
     color: #fff;
 } 
+@media screen and (max-width: 600px) {
+    .logo-footer-container {
+        width: 25%;
+    }
+    .logo-footer-container h1 {
+        font-size: 25px;
+    }
+    .logo-footer span {
+        font-size: 20px;
+        margin-right: 15px;
+    }
+}

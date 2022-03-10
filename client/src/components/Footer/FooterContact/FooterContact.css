@@ -17,3 +17,15 @@
     color: #999999;
     margin-bottom: 14px;
 }
+@media screen and (max-width: 600px) {
+    .footer-contact-container {
+        width: 25%;
+    }
+    .footer-contact-item h3 {
+        font-size: 15px;
+        margin-bottom: 18px;
+    }
+    .footer-contact-item p {
+        font-size: 13px;
+    }
+}

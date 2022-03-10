@@ -1,17 +1,23 @@
 import React from "react";
+import "./ProductList.css";
 
 function ProductList({ products }) {
   return (
     <>
-      <div className="products-list-container">
-        {products.map((product) => (
-          <div key={product.id} className="products-list-item">
-            <img src={product.img} alt={product.name} />
-            <h3>{product.name}</h3>
-            <p>{product.price}</p>
-          </div>
-        ))}
-      </div>
+      {products.map((product) => (
+        <div className="products-list-item card-products" key={product.id}>
+          <img
+            className="img-products"
+            src={product.image}
+            alt={product.title}
+          />
+          <h3>{product.title.substring(0, 12)}</h3>
+          <p>
+            <span>$</span>
+            {product.price}
+          </p>
+        </div>
+      ))}
     </>
   );
 }
