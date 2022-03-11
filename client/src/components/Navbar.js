@@ -58,12 +58,12 @@ function Navbar() {
             </ul>
          </div>
           <div className="sub-nav">
-            <div className="log-reg">
-              <Link to="/" className="subnav-links"> <i class="fa-solid fa-user"></i> &nbsp; Login /</Link>
-              <Link to="/" className="subnav-links"> Register &emsp;</Link>
+            <div className="sub-contain">
+              <Link to="/" className="subnav-item search subnav-links"> <i class="fa-solid fa-user"></i> &nbsp; Login /</Link>
+              <Link to="/" className="subnav-item search subnav-links"> Register &emsp;</Link>
               </div>
-              <div className="search-icon">
-               | <button className="search-btn"></button>
+              <div className="subnav-item search search-btn ">
+               <i class="search-icon fa-light fa-magnifying-glass"></i>
                 </div>
             
            </div>
