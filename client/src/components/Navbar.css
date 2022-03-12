@@ -41,7 +41,7 @@
 
 .navbar-icon {
   margin-right: 0.1rem;
-  margin-left: 50px;
+  margin-left: 150px;
 }
 
 .nav-menu {
@@ -49,6 +49,7 @@
   /* display: inline-block; */
   display: -webkit-box;
   padding: 20px;
+  margin-left: 200px;
 }
 
 .nav-item {
@@ -103,18 +104,16 @@
   /* height: 100%; */
   padding: 30px 10px;
 }
-
-.sub-nav .search-icon {
-  color: black;
-  font-size: 20px;
-  padding: 10px 20px;
-}
-
 .sub-nav .search-btn:hover {
   border: none;
 }
 .sub-nav .search:hover {
   background-color: bisque;
+}
+.sub-nav .search-icon {
+  color: black;
+  font-size: 20px;
+  padding: 10px 20px;
 }
 
 .menu-icon {
