@@ -59,8 +59,8 @@ function Navbar() {
          </div>
           <div className="sub-nav">
             <div className="sub-contain">
-              <Link to="/" className="subnav-item search subnav-links"> <i class="fa-solid fa-user"></i> &nbsp; Login /</Link>
-              <Link to="/" className="subnav-item search subnav-links"> Register &emsp;</Link>
+              <Link to="/login" className="subnav-item search subnav-links"> <i class="fa-solid fa-user"></i> &nbsp; Login /</Link>
+              <Link to="/register" className="subnav-item search subnav-links"> Register &emsp;</Link>
               </div>
               <div className="subnav-item search search-btn ">
                <i class="search-icon fa-light fa-magnifying-glass"></i>

@@ -6,6 +6,8 @@ import HomePage from "./components/pages/Home/Home";
 import ProductsPage from "./components/pages/Products/Products";
 import ServicesPage from "./components/pages/Services";
 import ContactPage from "./components/pages/Contact";
+import LoginPage from "./components/pages/Login";
+import RegisterPage from "./components/pages/Register";
 import "./App.css";
 
 function App() {
@@ -18,9 +20,11 @@ function App() {
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/login" element={<LoginPage />}/>
+          <Route path="/register" element={<RegisterPage />} />
         </Routes>
         <Footer/>
-      </Router>
+      </Router>s
     </>
   );
 }
