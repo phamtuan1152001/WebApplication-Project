@@ -25,8 +25,8 @@
   /*  max-width: 1300px;
   margin-right: auto;
   margin-left: auto; */
-  position: absolute;
-  left: 200px;
+  /* position: absolute;
+  left: 200px; */
 }
 
 .navbar-logo {
@@ -41,13 +41,15 @@
 
 .navbar-icon {
   margin-right: 0.1rem;
+  margin-left: 150px;
 }
 
 .nav-menu {
   list-style: none;
-  display: inline-block;
+  /* display: inline-block; */
   display: -webkit-box;
   padding: 20px;
+  margin-left: 200px;
 }
 
 .nav-item {
@@ -77,19 +79,43 @@
 .sub-nav {
   cursor: pointer;
   display: flex;
+  justify-content: center;
   float: right;
   font-size: 1.2rem;
-  padding: 20px;
   font-family: Arial, Helvetica, sans-serif;
+  padding: 20px;
 }
-.sub-nav .log-reg {
-  text-decoration: none;
-  height: 100%;
+.sub-contain {
+  display: flex;
+  justify-content: center;
+  padding: 20px 20px;
+}
+.sub-nav .subnav-item {
+  display: flex;
+  justify-content: center;
+  padding: 20px 20px;
+}
+
+.sub-nav .subnav-links {
   color: black;
-}
-.sub-nav .search-btn {
+  /* display: flex; */
+  align-items: center;
   text-decoration: none;
+  /* height: 100%; */
+  padding: 30px 10px;
 }
+.sub-nav .search-btn:hover {
+  border: none;
+}
+.sub-nav .search:hover {
+  background-color: bisque;
+}
+.sub-nav .search-icon {
+  color: black;
+  font-size: 20px;
+  padding: 10px 20px;
+}
+
 .menu-icon {
   display: none;
 }
