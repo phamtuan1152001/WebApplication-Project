@@ -16,6 +16,7 @@ function ProductList({ products }) {
             <span>$</span>
             {product.price}
           </p>
+          <button><span><i class="fa-solid fa-bag-shopping"></i></span>Add to cart</button>
         </div>
       ))}
     </>
