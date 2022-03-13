@@ -1,0 +1,122 @@
+{
+    "products": [
+        {
+            "_id": "622278060ec7191b4f30b1af", 
+            "Cid": "C01",
+            "ImageID": "I01",
+            "Name": "Jeans",
+            "Price": "$58",
+            "pID": "p01",
+            "dID":"d01"
+        },
+        {
+            "_id": "622278230ec7191b4f30b1b0", 
+            "Cid": "C01",
+            "ImageID": "I01",
+            "Name": "Short",
+            "Price": "$35",
+            "pID": "p02",
+            "dID":"d02"
+        },
+        {
+            "_id": "6222783c0ec7191b4f30b1b1", 
+            "Cid": "C01",
+            "ImageID": "I01",
+            "Name": "Sport pants",
+            "Price": "$20",
+            "pID": "p03",
+            "dID":"d03"
+        },
+        {
+            "_id": "6222784c0ec7191b4f30b1b2", 
+            "Cid": "C02",
+            "ImageID": "I01",
+            "Name": "Polo Shirt",
+            "Price": "$65",
+            "pID": "p04",
+            "dID":"d04"
+        },
+        {
+            "_id": "6222785a0ec7191b4f30b1b3", 
+            "Cid": "C02",
+            "ImageID": "I01",
+            "Name": "Hiphop Shirt",
+            "Price": "$30",
+            "pID": "p05",
+            "dID":"d05"
+        }
+    ],
+
+    "details": [
+        {
+            "_id": "6222785a0ec7191b4f30b1b3", 
+            "deID": "de01",
+            "pID": "p01",
+            "sID": "s03",
+            "coID": "co01"
+        },
+        {
+            "_id": "6222f7d4efa85794950cac83", 
+            "deID": "de01",
+            "pID": "p01",
+            "sID": "s04",
+            "coID": "co01"
+        },
+        {
+            "_id": "6222f8a5efa85794950cac8c", 
+            "deID": "de01",
+            "pID": "p01",
+            "sID": "s05",
+            "coID": "co01"
+        },
+        {
+            "_id": "6222fa75efa85794950cac91", 
+            "deID": "de01",
+            "pID": "p01",
+            "sID": "s03",
+            "coID": "co02"
+        },
+        {
+            "_id": "6222fb99efa85794950cac96", 
+            "deID": "de01",
+            "pID": "p01",
+            "sID": "s04",
+            "coID": "co02"
+        },
+        {
+            "_id": "6222fcaaefa85794950caca2", 
+            "deID": "de02",
+            "pID": "p04",
+            "sID": "s02",
+            "coID": "co02"
+        },
+        {
+            "_id": "6222fcd3efa85794950caca3", 
+            "deID": "de02",
+            "pID": "p04",
+            "sID": "s03",
+            "coID": "co02"
+        },
+        {
+            "_id": "6222fcf7efa85794950caca4", 
+            "deID": "de02",
+            "pID": "p04",
+            "sID": "s01",
+            "coID": "co03"
+        },
+        {
+            "_id": "6222fd20efa85794950caca5", 
+            "deID": "de02",
+            "pID": "p04",
+            "sID": "s02",
+            "coID": "co03"
+        },
+        {
+            "_id": "6222fd50efa85794950caca6", 
+            "deID": "de02",
+            "pID": "p04",
+            "sID": "s03",
+            "coID": "co03"
+        }
+    ]
+}
