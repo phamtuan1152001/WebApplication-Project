@@ -10,7 +10,7 @@ function ValidateBody(schema){
             if (!req.value) req.value = {}
             if (!req.value['params']) req.value.params = {}
 
-            req.value.boy = ValidatorResult.value
+            req.value.body = ValidatorResult.value
             next()
         }
     }
@@ -33,6 +33,10 @@ function ValidateParam(schema, name){
 
 
 const Schemas = {
+    idSchema: Joi.object().keys({
+        param: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required()
+    }),
+
     userSchema: Joi.object().keys({
         Firstname: Joi.string().min(2).required(),
         Lastname: Joi.string().min(2).required(),

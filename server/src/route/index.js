@@ -9,12 +9,11 @@ const passport = require('passport')
 const passportConfig = require('../config/db/passport')
 
 router.route('/')
-    .get(UserController.register)
+    .get(UserController.index)
     .post(ValidateBody(Schemas.userSchema), UserController.newUser)
 
 router.route('/:userID')
     .get(ValidateParam(Schemas.idSchema, 'userID'), UserController.getUser)
-    .put(ValidateParam(Schemas.idSchema, 'userID'), ValidateBody(Schemas.userSchema), UserController.replaceUser)
     .patch(ValidateParam(Schemas.idSchema, 'userID'), ValidateBody(Schemas.userOptionalSchema), UserController.updateUser)
 
 router.route('/auth/google').post(passport.authenticate('google-plus-token', {session: false}) ,UserController.AuthGoogle)

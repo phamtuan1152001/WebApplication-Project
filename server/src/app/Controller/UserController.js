@@ -12,8 +12,10 @@ function encodedToken(userID){
     },  JWT_SECRET)
 }
 
-async function register (req, res){
-    await res.render('register')
+const index = async (req, res, next) => {
+    const users = await User.find({})
+
+    return res.status(200).json({users})
 }
 
 async function newUser (req, res, next){
@@ -77,17 +79,6 @@ async function AuthFacebook (req, res, next){
     return res.status(200).json({success: true})
 }
 
-async function replaceUser (req, res, next){
-    // enforce new user to old user
-    const { userID } = req.value.params
-
-    const newUser = req.value.body
-
-    const result = await User.findByIdAndUpdate(userID, newUser)
-
-    return res.status(200).json({success: true})
-}
-
 async function updateUser (req, res, next){
     // number of fields
     const { userID } = req.value.params
@@ -100,10 +91,9 @@ async function updateUser (req, res, next){
 }
 
 module.exports = {
-    register, 
+    index, 
     newUser,
     getUser,
-    replaceUser,
     updateUser,
     SignUp,
     SignIn,
