@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./ProductList.css";
 
 function ProductList({ products }) {
@@ -16,7 +17,12 @@ function ProductList({ products }) {
             <span>$</span>
             {product.price}
           </p>
-          <button><span><i class="fa-solid fa-bag-shopping"></i></span>Add to cart</button>
+          <Link to={`/products/${product.id}`}>
+            <span>
+              <i class="fa-solid fa-bag-shopping"></i>
+            </span>
+            Add to cart
+          </Link>
         </div>
       ))}
     </>

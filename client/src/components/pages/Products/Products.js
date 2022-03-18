@@ -1,9 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import ProductList from "./ProductList/ProductList";
-//import ProductSelection from "./ProductSelection/ProductSelection";
 import "./Products.css";
-//import Skeleton from "react-loading-skeleton";
 
 function Products() {
   const [data, setData] = useState([]);
@@ -28,9 +26,9 @@ function Products() {
     getProducts();
   }, []);
 
-  console.log(data);
+  /* console.log(data);
   console.log(filter);
-  console.log(loading);
+  console.log(loading); */
 
   const Loading = () => {
     return <>Loading....</>;
