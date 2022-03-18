@@ -1,0 +1,55 @@
+[{
+  "_id": {
+    "$oid": "6222dde7efa85794950cac3c"
+  },
+  "name": "Trousers",
+  "Cid": "C01"
+},{
+  "_id": {
+    "$oid": "6222de4cefa85794950cac3d"
+  },
+  "Cid": "C02",
+  "name": "T-shirt"
+},{
+  "_id": {
+    "$oid": "6222de87efa85794950cac3e"
+  },
+  "Cid": "C03",
+  "name": "Shirt"
+},{
+  "_id": {
+    "$oid": "6222dea2efa85794950cac3f"
+  },
+  "Cid": "C04",
+  "name": "Hand bag"
+},{
+  "_id": {
+    "$oid": "6222dedaefa85794950cac40"
+  },
+  "Cid": "C05",
+  "name": "Glasses"
+},{
+  "_id": {
+    "$oid": "6222df3aefa85794950cac41"
+  },
+  "Cid": "C06",
+  "name": "Jacket"
+},{
+  "_id": {
+    "$oid": "6222df68efa85794950cac42"
+  },
+  "Cid": "C07",
+  "name": "Sweater"
+},{
+  "_id": {
+    "$oid": "6222df99efa85794950cac43"
+  },
+  "Cid": "C08",
+  "name": "Shoes"
+},{
+  "_id": {
+    "$oid": "6222efbeefa85794950cac48"
+  },
+  "Cid": "C09",
+  "name": "Clothes"
+}]

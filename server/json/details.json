@@ -1,0 +1,31 @@
+[{
+  "_id": {
+    "$oid": "6222f39befa85794950cac55"
+  },
+  "deID": "de01",
+  "pID": "622278060ec7191b4f30b1af",
+  "color": {
+    "color1": "Blue",
+    "color2": "Black"
+  },
+  "size": {
+    "size1": "L",
+    "size2": "XL",
+    "size3": "XXL"
+  }
+},{
+  "_id": {
+    "$oid": "6222fcaaefa85794950caca2"
+  },
+  "deID": "de02",
+  "pID": "6222784c0ec7191b4f30b1b2",
+  "color": {
+    "color1": "Black",
+    "color2": "White"
+  },
+  "size": {
+    "size1": "S",
+    "size2": "M",
+    "size3": "L"
+  }
+}]

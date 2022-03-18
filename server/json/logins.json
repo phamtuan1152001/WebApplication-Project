@@ -1,0 +1,35 @@
+[{
+  "_id": {
+    "$oid": "6221c0db3ae11370f9ce11b9"
+  },
+  "Firstname": "Tuan",
+  "Lastname": "Le Quang",
+  "Address": "123/456 Bien Hoa, Dong Nai",
+  "Phone": "0774619966",
+  "email": "lequangtuan1331@tnt.store",
+  "password": "$2a$10$5.u9uSgb9YU24qCaLmIjV.YiGuItGuSlvA32x86uEW9RG6jnwg6ay",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6221e9cbd0e14b0cbf327a72"
+  },
+  "email": "lqtuan1109@gmail.com",
+  "AuthGoogleID": "106658469793061330939",
+  "AuthFacebookID": null,
+  "AuthType": "google",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6221ea68570078adf9b69f30"
+  },
+  "Firstname": "Hung",
+  "Lastname": "Le Quang",
+  "Address": "123/456 Bien Hoa, Dong Nai",
+  "Phone": "0774619999",
+  "email": "lequanghung109@tnt.store",
+  "password": "$2a$10$U.MFTPZ4c0cOaXnn/8Pm3.e9e8dSAxw9Yl8DPKXWJGxEaWYUztNuC",
+  "AuthGoogleID": null,
+  "AuthFacebookID": null,
+  "AuthType": "local",
+  "__v": 0
+}]
