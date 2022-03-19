@@ -12,7 +12,12 @@ async function ShowProduct (req, res){
             $regex: req.params.key
         }
     })
-    const Product = await products.find({Cid:{$regex: catePart.Cid}}).sort({Price: 1})
+    const Product = await products.find({Cid:{$regex: catePart.Cid}})
+    .sort({Price: 1})
+    .populate({
+        path: 'Cid',
+        select: 'name'
+    })
     res.send(Product)
     
 }
@@ -26,7 +31,13 @@ async function DetailProcduct (req, res){
         }
     })
     const details = await detail.find({pID:{$regex: product.pID}})
-    .populate({path: 'pID'})
+    .populate({
+        path: 'pID',
+        populate: {
+            path: 'Cid',
+            select: 'name'
+        }
+    })
 
     
     res.send(details)

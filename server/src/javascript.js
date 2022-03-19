@@ -3,8 +3,8 @@ const app = express();
 const bodyParser = require('body-parser')
 const morgan = require("morgan");
 
-require('./config/db/connect').mongoURI;
 require('dotenv').config();
+require('./config/db/connect').mongoURI;
 const index = require('./route/index')
 const api = require('./route/api')
 
