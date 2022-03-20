@@ -5,7 +5,7 @@ import Footer from "./components/Footer/Footer";
 import HomePage from "./components/pages/Home/Home";
 import ProductsPage from "./components/pages/Products/Products";
 import ServicesPage from "./components/pages/Services";
-import ContactPage from "./components/pages/Contact";
+import ContactPage from "./components/pages/Contact/Contact";
 import LoginPage from "./components/pages/Login/Login";
 import RegisterPage from "./components/pages/Register/Register";
 import ProductPage from "./components/pages/Products/Product/Product";
