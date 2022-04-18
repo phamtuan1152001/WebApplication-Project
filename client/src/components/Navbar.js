@@ -65,7 +65,6 @@ function Navbar() {
               <div className="subnav-item search search-btn ">
                <i class="search-icon fa-light fa-magnifying-glass"></i>
                 </div>
-            
            </div>
           <div className="menu-icon" onClick={handleClick}>
             {click ? <FaTimes /> : <FaBars />}
