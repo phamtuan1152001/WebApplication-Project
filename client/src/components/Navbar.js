@@ -41,7 +41,13 @@ function Navbar() {
                 <Link to="/contact" className="nav-links">
                   Contact
                 </Link>
+              </li> 
+              {/* <li>
+                <Link to="/login" className="subnav-item search subnav-links">  Login /</Link>
               </li>
+              <li>
+                <Link to="/register" className="subnav-item search subnav-links"> Register </Link>
+              </li> */}
               {/* <li className="nav-btn">
               {button ? (
                 <Link to="/sign-up" className="btn-link">
@@ -64,8 +70,7 @@ function Navbar() {
               </div>
               <div className="subnav-item search search-btn ">
                <i class="search-icon fa-light fa-magnifying-glass"></i>
-                </div>
-            
+              </div>
            </div>
           <div className="menu-icon" onClick={handleClick}>
             {click ? <FaTimes /> : <FaBars />}

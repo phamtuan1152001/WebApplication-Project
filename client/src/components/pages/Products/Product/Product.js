@@ -1,4 +1,6 @@
 import React from 'react'
+import { useDispatch } from "react-redux";
+import { addCart } from '../../../../redux/action';
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./Product.css";
@@ -6,6 +8,12 @@ function Product() {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch();
+  const addProduct = (product) => {
+    dispatch(addCart(product));
+  }
+
 
   useEffect(() => {
     const getProduct = async () => {
@@ -50,7 +58,7 @@ function Product() {
                 {product.price}
               </p>
               <h4>{product.description}</h4>
-              <button>Add to Cart</button>
+              <button onClick={() => addProduct(product)}>Add to Cart</button>
               <a className="product-cart" href="#">
                 Go to Cart
               </a>

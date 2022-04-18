@@ -19,7 +19,7 @@ function Login() {
               <br/>
               <input type="password" placeholder="Input your password" id="pass"/>
             </div>
-              <a href="#" id="login">Login</a>
+              <a href="https://github.com/typicode/json-server" id="login">Login</a>
               <div className="register-form"> 
               <p> Haven't got an account?</p> <a href="/register" className="go-to-register"> Register a new account!</a>
               </div>

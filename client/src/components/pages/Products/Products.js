@@ -31,7 +31,7 @@ function Products() {
   console.log(loading); */
 
   const Loading = () => {
-    return <>Loading....</>;
+    return <>Loading....hihi</>;
   };
 
   const filterProducts = (cat) => {
