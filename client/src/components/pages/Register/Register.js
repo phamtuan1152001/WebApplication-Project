@@ -9,28 +9,26 @@ function Register() {
           <form action="#" className="register-form">
             <h2 className="register-heading"> Register </h2>
             <div className="input-group">
-              <label for="name">Username:</label>
-              <br/>
-              <input type="text" placeholder="Your username" id="name"/>
+              <input type="text" placeholder=" " id="name"/>
+              <label for="name" className="form-label">Username</label>
             </div>
             <div className="input-group">
-              <label for="email">Email:</label>
-              <br/>
-              <input type="email" placeholder="Input your Email" id="email" />
+              <input type="email" placeholder=" " id="email" />
+              <label for="email" className="form-label">Email</label>
             </div>
             <div className="input-group">
                 <div className="pass">
-                  <label for="pass">Password:</label>
-                  <br/>
-                  <input type="password" placeholder="Password" id="pass"/>
-                </div>
-                <div className="pass-confirm">
-                  <label for="pass-conf">Password Confirm:</label>
-                  <br/>
-                  <input type="password" placeholder="Confirm Password" id="pass-conf"/>
+                  <input type="password" placeholder=" " id="pass"/>
+                  <label for="pass" className="form-label">Password</label>
                 </div>
                 </div>
                 <div className="input-group">
+                <div className="pass-confirm">
+                  <input type="password" placeholder=" " id="pass-conf"/>
+                  <label for="pass-conf" className="form-label">Password Confirm</label>
+                </div>
+                </div>
+                {/* <div className="input-group">
                   <label for="gender">Gender</label>
                   <br/>
                   <select name="gender" id="gender">
@@ -38,12 +36,12 @@ function Register() {
                     <option value="female">Female</option>
                     <option value="different">Different?</option>
                   </select>
-                </div>
+                </div> */}
                 <div className="input-group">
-                <label for="phone-num">Phone Number:</label>
-                <input type="number" placeholder="Phone number" id="phone-num"/>
+                <input type="tel" placeholder=" " id="phone-num" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"/>
+                <label for="phone-num" className="form-label">Phone Number</label>
                 </div>
-                <a href="#"  id="register">Register</a>
+                <input type="submit" id="register" value="Register" />
           </form>
       </div>
     </div>

@@ -1,3 +1,7 @@
+body{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+}
 .wrapper {
   position: relative;
   width: 100%;
@@ -16,10 +20,69 @@
   max-width: 1411px;
   margin: 0 auto;
 }
+.input-group{
+  margin-bottom: 10px;
+  margin-top: 5px;
+  position: relative;
+}
+input{
+  border: 1px solid #eee;
+  border-radius: 4px;
+  width: 100%;
+  height: 50px;
+  padding: 0 20px;
+  transition: 0.5s ease-in;
+  margin-bottom: 20px;
+}
+input:focus{
+  border-color: #00bfa6;
+}
+.input-group{
+  position: relative;
+}
+.form-label{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 25px;
+  user-select: none;
+  color: black;
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+input:not(:placeholder-shown)+.form-label,
+input:focus + .form-label{
+top: 0;
+padding: 10px;
+display: inline-block;
+background-color: white;
+color: #20dbc2;
+border-color: #00bfa6;
+font: bold;
+}
 .register-form {
   padding: 60px 0 20px 0;
   margin: 0 auto;
   max-width: 800px;
   width: 95%;
   border-radius: 4px;
+}
+
+#register{
+  cursor: pointer;
+  display: block;
+  background-color: black;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  color: white;
+  border-radius: 10px;
+  transition: all 0.6s ease;
+}
+#register:hover{
+  color: black;
+  background-color: rgb(199, 189, 189);
+  transition: ease-in-out 0.5s;
+  box-shadow: 5px 10px rgb(94, 90, 90);
+
 }

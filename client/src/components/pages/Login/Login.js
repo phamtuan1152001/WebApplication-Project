@@ -1,5 +1,4 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import "./Login.css";
 function Login() {
   return (
@@ -10,20 +9,27 @@ function Login() {
           <form action="#" className="login-form">
             <h2 className="heading-login"> Login </h2>
             <div className="input-group"> 
-              <label for="name">Username:</label>
-              <br/>
-              <input type="text" placeholder="Input your username" id="name"/> 
+              <input type="text" placeholder=" " id="name"/>
+              <label for="name" className="form-label">Username</label>
             </div>
             <div className="input-group">
-              <label for="pass">Password:</label>
-              <br/>
-              <input type="password" placeholder="Input your password" id="pass"/>
+              <input type="password" placeholder=" " id="pass"/>
+              <label for="pass" className="form-label">Password</label>
             </div>
+              <input type="submit" id="login" name="Login" value="Login"/>
               <a href="https://github.com/typicode/json-server" id="login">Login</a>
               <div className="register-form"> 
               <p> Haven't got an account?</p> <a href="/register" className="go-to-register"> Register a new account!</a>
               </div>
-           
+              <p className="social-title">Or Login with:</p>
+              <div className="social-media">
+              <a href="#" class="social-icon">
+               <i class="fa-brands fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-google"></i>
+              </a>
+           </div>
           </form>
         </div>
       </div>
