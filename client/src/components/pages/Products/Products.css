@@ -11,9 +11,9 @@ body {
     width: 80%;
     margin-top: 100px;
 }
-.products-selections-container {
-    /* position: relative; */
-}
+/* .products-selections-container {
+    position: relative; 
+} */
 .products-list-container {
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
