@@ -14,11 +14,11 @@ function SubcribeForm() {
     <>
       {submit && alert("Subcribe Successfully!")}
       <form onSubmit={handleSubcribe}>
-        <fieldset className="form-control">
+        <fieldset className="form-group">
           <label>
-            <input placeholder="Enter your email address" />
+            <input className='form-control' placeholder="Enter your email address" />
           </label>
-          <button type="submit">Subcribe</button>
+          <button className='btn btn-outline-dark' type="submit">Subcribe</button>
         </fieldset>
       </form>
     </>

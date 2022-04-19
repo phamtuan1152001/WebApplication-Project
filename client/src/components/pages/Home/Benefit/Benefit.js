@@ -5,10 +5,11 @@ import benefits from "./dataBenefits";
 
 function Benefit() {
   return (
-    <div className="benefits-container">
+    <div className="container row justify-content-center">
       {benefits.map((benefit, index) => (
-        <div key={index} className="benefits-item">
-          <img src={benefit.img} alt={benefit.h4} />
+        <div key={index} className="col-md-3 col-sm-12">
+          <div className="benefits-item">
+            <img src={benefit.img} alt={benefit.h4} />
           <h4>{benefit.h4}</h4>
           <p>{benefit.p}</p>
           <Link to="/">
@@ -21,6 +22,7 @@ function Benefit() {
               </strong>
             </p>
           </Link>
+          </div>
         </div>
       ))}
     </div>

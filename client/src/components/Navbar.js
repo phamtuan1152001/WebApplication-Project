@@ -16,23 +16,23 @@ function Navbar() {
         <div className="container">
           <Link to="/" className="navbar-brand">
             <HiOutlineShoppingBag />
-            TNTTeam
+            <span>TNTTeam</span>
           </Link>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link to="/" className="nav-link active" aria-current="page">
+                <Link to="/" className="nav-link" aria-current="page">
                   Home
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/services" className="nav-link">
-                  Services
                 </Link>
               </li>
               <li className="nav-item">
                 <Link to="/products" className="nav-link">
                   Products
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/services" className="nav-link">
+                  Services
                 </Link>
               </li>
               <li className="nav-item">
