@@ -6,20 +6,14 @@ import "./Footer.css";
 function Footer() {
   return (
     <>
-      <div className="container-fluid">
-        <div className="footer-item row">
-          <div className="col-md-3">
+      <div className="footer-container">
+        <div className="footer-item">
           <FooterLogo />
-          </div>
-          <div className="col-md-6">
           <FooterInfo />
-          </div>
-          <div className="col-md-3">
           <FooterContact />
-          </div>
         </div>
-        <div className="footer-item-2 container row">
-          <div className="footer-powered col-md-6">
+        <div className="footer-item-2">
+          <div className="footer-powered">
             <p>
               Copyright © <strong>TNTTeam</strong> all rights reserved. Powered
               by <strong>TNTTeam</strong>
