@@ -1,76 +1,75 @@
 import React from "react";
-import { useState } from "react";
+// import { useState } from "react";
 import { Link } from "react-router-dom";
 import { HiOutlineShoppingBag } from "react-icons/hi";
-import { FaBars, FaTimes } from "react-icons/fa";
+// import { FaBars, FaTimes } from "react-icons/fa";
 import "./Navbar.css";
 
 function Navbar() {
-  const [click, setClick] = useState(false);
-  const handleClick = () => {
-    setClick(!click);
-  };
+  // const [click, setClick] = useState(false);
+  // const handleClick = () => {
+  //   setClick(!click);
+  // };
   return (
     <>
-      <div className="navbar">
-        <div className="navbar-container container">
-          <div>
-            <Link to="/" className="navbar-logo">
-              <HiOutlineShoppingBag className="navbar-icon" />
-           </Link> 
-
-          </div>
-          <div className="nav">
-            <ul className={click ? "nav-menu active" : "nav-menu"}>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container">
+          <Link to="/" className="navbar-brand">
+            <HiOutlineShoppingBag />
+            TNTTeam
+          </Link>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link to="/" className="nav-links">
+                <Link to="/" className="nav-link active" aria-current="page">
                   Home
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/services" className="nav-links">
+                <Link to="/services" className="nav-link">
                   Services
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/products" className="nav-links">
+                <Link to="/products" className="nav-link">
                   Products
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/contact" className="nav-links">
+                <Link to="/contact" className="nav-link">
                   Contact
                 </Link>
               </li>
-              {/* <li className="nav-btn">
-              {button ? (
-                <Link to="/sign-up" className="btn-link">
-                  <Button buttonStyle="btn--outline">Sign Up</Button>
-                </Link>
-              ) : (
-                <Link to="/sign-up" className="btn-link">
-                  <Button buttonStyle="btn--outline" buttonSize="btn--mobile">
-                    Sign Up
-                  </Button>
-                </Link>
-              )}
-            </li> */}
             </ul>
-         </div>
-          <div className="sub-nav">
-            <div className="sub-contain">
-              <Link to="/login" className="subnav-item search subnav-links"> <i class="fa-solid fa-user"></i> &nbsp; Login /</Link>
-              <Link to="/register" className="subnav-item search subnav-links"> Register &emsp;</Link>
-              </div>
-              <div className="subnav-item search search-btn ">
-               <i class="search-icon fa-light fa-magnifying-glass"></i>
-                </div>
-           </div>
-          <div className="menu-icon" onClick={handleClick}>
-            {click ? <FaTimes /> : <FaBars />}
+            <div className="button-nav d-flex">
+              <button className="btn btn-outline-info mr-2">
+                <Link to="/login" className="nav-link">
+                  <span>
+                    <i class="fa-solid fa-arrow-right-to-bracket mr-2"></i>
+                    Login
+                  </span>
+                </Link>
+              </button>
+              <button className="btn btn-outline-info mr-2">
+                <Link to="/register" className="nav-link">
+                  <span>
+                    <i class="fa-solid fa-user-plus mr-2"></i>
+                    Register
+                  </span>
+                </Link>
+              </button>
+              <button className="btn btn-outline-info mr-2">
+                <Link to="/cart" className="nav-link">
+                  <span>
+                    <i class="fa-solid fa-cart-shopping mr-2"></i>
+                    Cart (0)
+                  </span>
+                </Link>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </nav>
     </>
   );
 }
