@@ -17,7 +17,6 @@ function Login() {
               <label for="pass" className="form-label">Password</label>
             </div>
               <input type="submit" id="login" name="Login" value="Login"/>
-              <a href="https://github.com/typicode/json-server" id="login">Login</a>
               <div className="register-form"> 
               <p> Haven't got an account?</p> <a href="/register" className="go-to-register"> Register a new account!</a>
               </div>
