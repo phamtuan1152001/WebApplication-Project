@@ -5,11 +5,11 @@ import "./Subcribe.css";
 function Subcribe() {
   return (
     <>
-      <div className="subcribe-container">
-        <div className="subcribe-form">
+      <div className="subcribe-container container-fluid">
+        <div className="container">
           <div className="subcribe-form-item">
             <h2>Subcribe To Our Newsletter</h2>
-            <p>
+            <p className="instrusction">
               Sign up for the weekly newsletter and build better ecommerce
               stores.
             </p>

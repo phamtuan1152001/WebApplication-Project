@@ -1,11 +1,25 @@
 import React from 'react'
+import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./Product.css";
+import { addCart, deleteCart } from "../../../../redux/action";
+
 function Product() {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  // Store useDispatch in a variable
+  const dispatch = useDispatch();
+
+  const addProduct = (product) => {
+    dispatch(addCart(product));
+  };
+
+  const deleteProduct = (product) => {
+    dispatch(deleteCart(product));
+  };
 
   useEffect(() => {
     const getProduct = async () => {
@@ -50,10 +64,8 @@ function Product() {
                 {product.price}
               </p>
               <h4>{product.description}</h4>
-              <button>Add to Cart</button>
-              <a className="product-cart" href="#">
-                Go to Cart
-              </a>
+              <button onClick={() => addProduct(product)}>Add to Cart</button>
+              <button className="product-cart">Go to Cart</button>
             </div>
           </div>
         </div>
