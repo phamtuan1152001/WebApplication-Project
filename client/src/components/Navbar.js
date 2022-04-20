@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 // import { FaBars, FaTimes } from "react-icons/fa";
 import "./Navbar.css";
-import { useSelector } from "react-redux";
-
+import { useSelector } from "react-redux";  
 function Navbar() {
   // const [click, setClick] = useState(false);
   // const handleClick = () => {
@@ -19,8 +18,9 @@ function Navbar() {
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container">
           <Link to="/" className="navbar-brand">
-            <HiOutlineShoppingBag />
-            <span>TNTTeam</span>
+            <img className="navbar-logo" src="image/TNT.png" alt="TNT logo"/>
+            {/* <HiOutlineShoppingBag />
+            <span>TNTTeam</span> */}
           </Link>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0">

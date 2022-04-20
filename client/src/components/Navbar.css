@@ -15,3 +15,7 @@
   align-items: center;
   font-size: 30px;
 }
+.navbar-logo{
+ max-width: 300px;
+ height: 180px;
+}
