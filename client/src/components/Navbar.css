@@ -1,3 +1,4 @@
+
 .button-nav button span {
   color: black;
 }
@@ -13,4 +14,8 @@
   justify-content: center;
   align-items: center;
   font-size: 30px;
+}
+.navbar-logo{
+ max-width: 300px;
+ height: 180px;
 }

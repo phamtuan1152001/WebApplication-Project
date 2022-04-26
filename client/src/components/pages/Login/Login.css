@@ -67,7 +67,7 @@ border: 1px solid #eee;
 border-radius: 4px;
 width: 100%;
 height: 50px;
-padding: 0 20px;
+padding: 0 10px;
 transition: 0.5s ease-in;
 }
 input:focus{
@@ -79,7 +79,7 @@ input:focus{
 .form-label{
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-75%);
   left: 25px;
   user-select: none;
   color: black;
@@ -89,7 +89,7 @@ input:focus{
 input:not(:placeholder-shown)+.form-label,
 input:focus + .form-label{
 top: 0;
-padding: 10px;
+padding: 0;
 display: inline-block;
 background-color: white;
 color: #20dbc2;

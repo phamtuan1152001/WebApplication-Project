@@ -32,7 +32,7 @@ input{
   height: 50px;
   padding: 0 20px;
   transition: 0.5s ease-in;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 input:focus{
   border-color: #00bfa6;
@@ -43,7 +43,7 @@ input:focus{
 .form-label{
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-75%);
   left: 25px;
   user-select: none;
   color: black;
