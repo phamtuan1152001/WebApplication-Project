@@ -1,17 +1,10 @@
 import React from "react";
-// import { useState } from "react";
 import { Link } from "react-router-dom";
 import { HiOutlineShoppingBag } from "react-icons/hi";
-// import { FaBars, FaTimes } from "react-icons/fa";
 import "./Navbar.css";
 import { useSelector } from "react-redux";
 
 function Navbar() {
-  // const [click, setClick] = useState(false);
-  // const handleClick = () => {
-  //   setClick(!click);
-  // };
-
   const state = useSelector((state) => state.handleCart);
 
   return (

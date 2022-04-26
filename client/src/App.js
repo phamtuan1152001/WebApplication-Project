@@ -9,6 +9,7 @@ import ContactPage from "./components/pages/Contact/Contact";
 import LoginPage from "./components/pages/Login/Login";
 import RegisterPage from "./components/pages/Register/Register";
 import ProductPage from "./components/pages/Products/Product/Product";
+import CartPage from "./components/pages/Products/Cart/Cart";
 import "./App.css";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/products/:id" element={<ProductPage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/cart" element={<CartPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
       </Routes>
