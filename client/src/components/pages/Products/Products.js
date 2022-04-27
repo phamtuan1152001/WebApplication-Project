@@ -26,10 +26,6 @@ function Products() {
     getProducts();
   }, []);
 
-  /* console.log(data);
-  console.log(filter);
-  console.log(loading); */
-
   const Loading = () => {
     return <>Loading....</>;
   };
