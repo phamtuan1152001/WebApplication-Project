@@ -1,50 +1,5 @@
-body {
-    height: auto;
-}
-.products-container {
-    /* background-color: pink; */
-    display: grid;
-    grid-template-columns: 15% 85%;
-    grid-template-rows: auto;
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
-    margin-top: 100px;
-}
-.products-selections-container {
-    /* position: relative; */
-}
 .products-list-container {
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
     grid-template-rows: auto;
-}
-.products-selection-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 12%;
-    position: fixed;
-    background-color: #eff0f3;
-    border-top-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-.products-selection-control {
-    margin: 20px 0 20px 0;
-}
-.products-selection-control button {
-    width: 100%;
-    font-size: 18px;
-    padding: 10px 20px 10px 20px;
-    border: solid 1px #eff0f3;
-    border-radius: 10px;
-    transition: 0.5s;
-    background-color: #ff8e3c;
-}
-.products-selection-control button:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-    transition: 0.5s;
-    border: solid 1px #ebca5d;
 }

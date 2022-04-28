@@ -6,18 +6,19 @@ function ProductList({ products }) {
   return (
     <>
       {products.map((product) => (
-        <div className="products-list-item card-products" key={product.id}>
+        <div className="products-list-item" key={product._id}>
           <img
             className="img-products"
-            src={product.image}
-            alt={product.title}
+            src={product.Image}
+            alt={product.Name}
           />
-          <h3>{product.title.substring(0, 12)}</h3>
+
+          <h3>{product.Name.substring(0, 12)}</h3>
           <p>
             <span>$</span>
-            {product.price}
+            {product.Price}
           </p>
-          <Link to={`/products/${product.id}`}>
+          <Link to={`/products/${product._id}`} className="btn btn-dark">
             <span>
               <i class="fa-solid fa-bag-shopping"></i>
             </span>

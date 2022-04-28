@@ -12,7 +12,7 @@ function Products() {
     let componentMounted = true;
     const getProducts = async () => {
       setLoading(true);
-      const response = await fetch("https://fakestoreapi.com/products");
+      const response = await fetch("http://localhost:5000/products");
       if (componentMounted) {
         setData(await response.clone().json());
         setFilter(await response.json());
@@ -37,33 +37,48 @@ function Products() {
 
   return (
     <>
-      <div className="products-container">
-        <div className="products-selections-container">
+      <div className="container">
+        <div className="row bg-light text-center mb-4">
           {/* <ProductSelection /> */}
-          <div className="products-selection-item">
-            <div className="products-selection-control">
-              <button onClick={() => setFilter(data)}>All Clothing</button>
-            </div>
-            <div className="products-selection-control">
-              <button onClick={() => filterProducts("men's clothing")}>
-                Men's Clothing
-              </button>
-            </div>
-            <div className="products-selection-control">
-              <button onClick={() => filterProducts("women's clothing")}>
-                Woman's Clothing
-              </button>
-            </div>
-            <div className="products-selection-control">
-              <button onClick={() => filterProducts("jewelery")}>
-                Jewelery
-              </button>
-            </div>
-            <div className="products-selection-control">
-              <button onClick={() => filterProducts("electronics")}>
-                Electronic
-              </button>
-            </div>
+          <div className="col">
+            <button
+              className="btn btn-outline-secondary"
+              onClick={() => setFilter(data)}
+            >
+              All Clothing
+            </button>
+          </div>
+          <div className="col">
+            <button
+              className="btn btn-outline-secondary"
+              onClick={() => filterProducts("men's clothing")}
+            >
+              Men's Clothing
+            </button>
+          </div>
+          <div className="col">
+            <button
+              className="btn btn-outline-secondary"
+              onClick={() => filterProducts("women's clothing")}
+            >
+              Woman's Clothing
+            </button>
+          </div>
+          <div className="col">
+            <button
+              className="btn btn-outline-secondary"
+              onClick={() => filterProducts("jewelery")}
+            >
+              Jewelery
+            </button>
+          </div>
+          <div className="col">
+            <button
+              className="btn btn-outline-secondary"
+              onClick={() => filterProducts("electronics")}
+            >
+              Electronic
+            </button>
           </div>
         </div>
         <div className="products-list-container">
