@@ -16,9 +16,7 @@ async function getAllProduct(req, res) {
 async function DetailProcduct (req, res){
     // Show all product information
     const product = await products.findOne({
-        id: {
-            $regex: req.params.keyProduct
-        }
+        _id:  req.params.keyProduct
     })
     const details = await detail.find({pID:{$regex: product.pID}})
     .populate({
