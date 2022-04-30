@@ -15,6 +15,7 @@ function Product() {
 
   const addProduct = (product) => {
     dispatch(addCart(product));
+    console.log(product);
   };
 
   const deleteProduct = (product) => {
@@ -47,7 +48,11 @@ function Product() {
         <div className="product-info-container">
           <div className="product-info-item">
             <div className="product-info-img">
-              <img className="product-img" src={product.image} />
+              <img
+                className="product-img"
+                src={product.image}
+                alt={product.title}
+              />
             </div>
             <div className="product-info">
               <h1>{product.title}</h1>

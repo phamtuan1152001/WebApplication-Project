@@ -6,37 +6,21 @@ const detail = require('../Models/Detail')
 
 
 // Show all products belong to its category in database
-async function ShowProduct (req, res){
-    const catePart = await categories.findOne({
-        name: {
-            $regex: req.params.key
-        }
-    })
-    const Product = await products.find({Cid:{$regex: catePart.Cid}})
-    .sort({Price: 1})
-    .populate({
-        path: 'Cid',
-        select: 'name'
-    })
-    res.send(Product)
-    
+async function getAllProduct(req, res) {
+    const product = await products.find();
+
+    return res.status(200).json(product);
 }
 
 // Show detail product
 async function DetailProcduct (req, res){
     // Show all product information
     const product = await products.findOne({
-        Name: {
-            $regex: req.params.keyProduct
-        }
+        _id:  req.params.keyProduct
     })
-    const details = await detail.find({pID:{$regex: product.pID}})
+    const details = await detail.find({pID:{$regex: product._id}})
     .populate({
         path: 'pID',
-        populate: {
-            path: 'Cid',
-            select: 'name'
-        }
     })
 
     
@@ -59,6 +43,6 @@ async function Search (req, res){
 
 module.exports = {
     Search,
-    ShowProduct,
-    DetailProcduct
+    DetailProcduct,
+    getAllProduct
 }

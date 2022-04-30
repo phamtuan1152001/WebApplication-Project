@@ -26,11 +26,4 @@ router.route('/signin').post(ValidateBody(Schemas.SignInSchema),passport.authent
 
 router.route('/secret').get(passport.authenticate('jwt', {session: false}), UserController.Secret)
 
-router.route('/search/:key').get(ProductController.Search)
-
-router.route('/categories/:key').get(ProductController.ShowProduct)
-
-router.route('/categories/:key/:keyProduct').get(ProductController.DetailProcduct)
-
-
 module.exports = router

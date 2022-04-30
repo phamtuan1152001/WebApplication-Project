@@ -6,7 +6,7 @@ const morgan = require("morgan");
 require('dotenv').config();
 require('./config/db/connect').mongoURI;
 const index = require('./route/index')
-const api = require('./route/api')
+const product = require('./route/product')
 
 // Middlewares
 app.use(morgan('dev'))
@@ -28,8 +28,8 @@ app.get('/', (req, res, next) => {
       message: 'Server is OK!'
   })
 })
-app.use('/users', index)
-app.use('/api/v1', api)
+app.use('/user', index)
+app.use('/', product)
 
 // Catch 404 Errors and forward them to error handler
 app.use((req, res, next) => {
