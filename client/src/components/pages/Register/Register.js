@@ -8,9 +8,25 @@ function Register() {
       <div className="container">
           <form action="#" className="register-form">
             <h2 className="register-heading"> Register </h2>
+            <table>
+              <tr>
+                <td>
+              <div className="input-group w-100">
+              <input type="text" placeholder=" " id="fname"/>
+              <label for="fname" className="form-label">First Name</label>
+              </div>
+              </td>
+              <td>
+              <div className="input-group px-3 w-100 ">
+              <input type="text" placeholder=" " id="lname"/>
+              <label for="lname" className="form-label">Last Name</label>
+              </div>
+              </td>
+              </tr>
+              </table>
             <div className="input-group">
-              <input type="text" placeholder=" " id="name"/>
-              <label for="name" className="form-label">Username</label>
+              <input type="text" placeholder=" " id="address" />
+              <label for="address" className="form-label">Address</label>
             </div>
             <div className="input-group">
               <input type="email" placeholder=" " id="email" />
@@ -28,15 +44,6 @@ function Register() {
                   <label for="pass-conf" className="form-label">Password Confirm</label>
                 </div>
                 </div>
-                {/* <div className="input-group">
-                  <label for="gender">Gender</label>
-                  <br/>
-                  <select name="gender" id="gender">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="different">Different?</option>
-                  </select>
-                </div> */}
                 <div className="input-group">
                 <input type="tel" placeholder=" " id="phone-num" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"/>
                 <label for="phone-num" className="form-label">Phone Number</label>

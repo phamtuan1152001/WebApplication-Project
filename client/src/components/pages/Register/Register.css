@@ -37,6 +37,7 @@ input{
 input:focus{
   border-color: #00bfa6;
 }
+
 .input-group{
   position: relative;
 }
