@@ -6,7 +6,7 @@ function Contact() {
   return (
     <>
       <div>
-        <div className="wall-background">
+        <div className="">
 
         </div>
       </div>
