@@ -39,7 +39,7 @@ function Login() {
           password,
         }),
       });
-      let resJson = await res.json();
+      // let resJson = await res.json();
       if (res.status === 200) {
         console.log("login thanh cong");
         history.push("/");
