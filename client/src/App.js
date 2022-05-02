@@ -14,9 +14,9 @@ import "./App.css";
 import registerApi from "./api/registerAPI";
 
 function App() {
-  const [userList, setUser] = useState([]);
+  const [userList, setUserList] = useState([]);
 
-  useEffect(() =>{
+  useEffect(() => {
     const fetchUser = async () => {}
     try {
       const params = {
@@ -25,6 +25,7 @@ function App() {
       };
       const response = await registerApi.getAll(params);
       console.log(response);
+      setUserList(response.data);
     } catch (error) {
       console.log ('Failed to fetch User Information:', error);
     }
