@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer/Footer";
@@ -11,8 +11,28 @@ import RegisterPage from "./components/pages/Register/Register";
 import ProductPage from "./components/pages/Products/Product/Product";
 import CartPage from "./components/pages/Products/Cart/Cart";
 import "./App.css";
+import registerApi from "./api/registerAPI";
 
 function App() {
+  const [userList, setUser] = useState([]);
+
+  useEffect(() =>{
+    const fetchUser = async () => {}
+    try {
+      const params = {
+        _page: 1,
+        _limit: 10,
+      };
+      const response = await registerApi.getAll(params);
+      console.log(response);
+    } catch (error) {
+      console.log ('Failed to fetch User Information:', error);
+    }
+
+    fetchUser();
+  }, []);  
+
+
   return (
     <>
       <Navbar />

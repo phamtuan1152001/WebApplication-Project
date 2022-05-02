@@ -22,10 +22,10 @@ function Login() {
               </div>
               <p className="social-title">Or Login with:</p>
               <div className="social-media">
-              <a href="#" class="social-icon">
+              <a href="\" class="social-icon">
                <i class="fa-brands fa-facebook-f"></i>
               </a>
-              <a href="#" class="social-icon">
+              <a href="\" class="social-icon">
                 <i class="fab fa-google"></i>
               </a>
            </div>
