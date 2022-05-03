@@ -1,16 +1,7 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import "./Contact.css";
 
 function Contact() {
-  return (
-    <>
-      <div>
-        <div className="">
-
-        </div>
-      </div>
-    </>
-  )
+  return <div>Contact page</div>;
 }
+
 export default Contact;

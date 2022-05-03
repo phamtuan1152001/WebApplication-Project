@@ -28,32 +28,42 @@ app.get('/', (req, res, next) => {
       message: 'Server is OK!'
   })
 })
-app.use('/user', index)
-app.use('/', product)
+
+app.use("/user", index);
+app.use("/", product);
+// // test - song tuan
+// const cors = require("cors");
+// app.use(cors());
+// app.use("/testlogin", (req, res) => {
+//   res.send({
+//     token: "test123",
+//   });
+// });
 
 // Catch 404 Errors and forward them to error handler
 app.use((req, res, next) => {
-  const err = new Error('Not Found')
-  err.status = 404
-  next(err)
-})
+  const err = new Error("Not Found");
+  err.status = 404;
+  next(err);
+});
 
 // Error handler function
 app.use((err, req, res, next) => {
-  const error = app.get('env') === 'development' ? err : {}
-  const status = err.status || 500
+  const error = app.get("env") === "development" ? err : {};
+  const status = err.status || 500;
 
   // response to client
   return res.status(status).json({
-      error: {
-          message: error.message
-      }
-  })
-})
+    error: {
+      message: error.message,
+    },
+  });
+});
 
 
 
 const port = process.env.PORT;
-app.listen(port , () => {
+app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
+

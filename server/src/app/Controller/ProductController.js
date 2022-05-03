@@ -18,10 +18,15 @@ async function DetailProcduct (req, res){
     const product = await products.findOne({
         _id:  req.params.keyProduct
     })
-    const details = await detail.find({pID:{$regex: product._id}})
-    .populate({
-        path: 'pID',
-    })
+    const details = await detail
+      .find({ pID: { $regex: product._id } })
+      .populate({
+        path: "pID",
+        populate: {
+          path: "Cid",
+          select: "name",
+        },
+      });
 
     
     res.send(details)
