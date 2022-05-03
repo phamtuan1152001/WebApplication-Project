@@ -3,11 +3,11 @@ import axiosClient from "./axiosClient";
 
 const registerApi = {
     getAll: (params) => {
-        const url = '/sign-up';
+        const url = 'http://localhost:3000/user/signup';
         return axiosClient.get(url, { params });
     },
     get: (id) => {
-        const url = '/sign-up/${id}';
+        const url = 'http://localhost:3000/user/signup';
         return axiosClient.post(url);
     },
 }
