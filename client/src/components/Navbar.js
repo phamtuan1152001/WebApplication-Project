@@ -39,7 +39,7 @@ function Navbar() {
               <button className="btn btn-outline-info mr-2">
                 <Link to="/login" className="nav-link">
                   <span>
-                    <i class="fa-solid fa-arrow-right-to-bracket mr-2"></i>
+                    <i className="fa-solid fa-arrow-right-to-bracket mr-2"></i>
                     Login
                   </span>
                 </Link>
@@ -47,7 +47,7 @@ function Navbar() {
               <button className="btn btn-outline-info mr-2">
                 <Link to="/register" className="nav-link">
                   <span>
-                    <i class="fa-solid fa-user-plus mr-2"></i>
+                    <i className="fa-solid fa-user-plus mr-2"></i>
                     Register
                   </span>
                 </Link>
@@ -55,7 +55,7 @@ function Navbar() {
               <button className="btn btn-outline-info mr-2">
                 <Link to="/cart" className="nav-link">
                   <span>
-                    <i class="fa-solid fa-cart-shopping mr-2"></i>
+                    <i className="fa-solid fa-cart-shopping mr-2"></i>
                     Cart ({state.length})
                   </span>
                 </Link>

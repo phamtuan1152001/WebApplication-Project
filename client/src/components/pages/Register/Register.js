@@ -1,59 +1,158 @@
-import React from "react";
-// import { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Register.css";
+
+var url = "http://localhost:5000/user/signup";
+
 function Register() {
+  const [firstname, setFirstName] = useState("");
+  const [lastname, setLastName] = useState("");
+  const [address, setAddress] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passconfirm, setPassConfirm] = useState("");
+  const [phone, setPhone] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    try {
+      let res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          Firstname: firstname,
+          Lastname: lastname,
+          Address: address,
+          Phone: phone,
+          email: email,
+          password: password,
+          confirmPassword: passconfirm,
+        }),
+      });
+      // let resJson = await res.json();
+      if (res.status === 200) {
+        console.log("register thanh cong  ");
+        navigate("/login");
+      } else {
+        console.log("register that bai");
+        // console.log(resJson.details[0].message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
-    <div className="wrapper">
-      <div className="container">
-          <form action="#" className="register-form">
+      <div className="wrapper">
+        <div className="container">
+          <form onSubmit={handleRegister} className="register-form">
             <h2 className="register-heading"> Register </h2>
-            <table>
-              <tr>
-                <td>
-              <div className="input-group w-100">
-              <input type="text" placeholder=" " id="fname"/>
-              <label for="fname" className="form-label">First Name</label>
-              </div>
-              </td>
-              <td>
-              <div className="input-group px-3 w-100 ">
-              <input type="text" placeholder=" " id="lname"/>
-              <label for="lname" className="form-label">Last Name</label>
-              </div>
-              </td>
-              </tr>
-              </table>
             <div className="input-group">
-              <input type="text" placeholder=" " id="address" />
-              <label for="address" className="form-label">Address</label>
+              <input
+                type="text"
+                placeholder=" "
+                id="fullname"
+                onChange={(e) => {
+                  setFirstName(e.target.value);
+                }}
+              />
+              <label htmlFor="fullname" className="form-label">
+                First name
+              </label>
             </div>
             <div className="input-group">
-              <input type="email" placeholder=" " id="email" />
-              <label for="email" className="form-label">Email</label>
+              <input
+                type="text"
+                placeholder=" "
+                id="lastname"
+                onChange={(e) => {
+                  setLastName(e.target.value);
+                }}
+              />
+              <label htmlFor="lastname" className="form-label">
+                Last name
+              </label>
             </div>
             <div className="input-group">
-                <div className="pass">
-                  <input type="password" placeholder=" " id="pass"/>
-                  <label for="pass" className="form-label">Password</label>
-                </div>
-                </div>
-                <div className="input-group">
-                <div className="pass-confirm">
-                  <input type="password" placeholder=" " id="pass-conf"/>
-                  <label for="pass-conf" className="form-label">Password Confirm</label>
-                </div>
-                </div>
-                <div className="input-group">
-                <input type="tel" placeholder=" " id="phone-num" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"/>
-                <label for="phone-num" className="form-label">Phone Number</label>
-                </div>
-                <input type="submit" id="register" value="Register" />
+              <input
+                type="text"
+                placeholder=" "
+                id="address"
+                onChange={(e) => {
+                  setAddress(e.target.value);
+                }}
+              />
+              <label htmlFor="address" className="form-label">
+                Address
+              </label>
+            </div>
+            <div className="input-group">
+              <input
+                type="email"
+                placeholder=" "
+                id="email"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              />
+              <label htmlFor="email" className="form-label">
+                Email
+              </label>
+            </div>
+            <div className="input-group">
+              <div className="pass">
+                <input
+                  type="password"
+                  placeholder=" "
+                  id="pass"
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                />
+                <label htmlFor="pass" className="form-label">
+                  Password
+                </label>
+              </div>
+            </div>
+            <div className="input-group">
+              <div className="pass-confirm">
+                <input
+                  type="password"
+                  placeholder=" "
+                  id="pass-conf"
+                  onChange={(e) => {
+                    setPassConfirm(e.target.value);
+                  }}
+                />
+                <label htmlFor="pass-conf" className="form-label">
+                  Password Confirm
+                </label>
+              </div>
+            </div>
+            <div className="input-group">
+              <input
+                type="tel"
+                placeholder=" "
+                id="phone-num"
+                onChange={(e) => {
+                  setPhone(e.target.value);
+                }}
+              />
+              <label htmlFor="phone-num" className="form-label">
+                Phone Number
+              </label>
+            </div>
+            <input type="submit" id="register" value="Register" />
           </form>
+        </div>
       </div>
-    </div>
     </>
-  )
+  );
 }
 
 export default Register;

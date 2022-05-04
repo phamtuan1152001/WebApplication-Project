@@ -1,48 +1,36 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { createBrowserHistory } from "history";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
-// async function loginUser(credentials) {
-//   return fetch("https://reqres.in/api/login", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(credentials),
-//   }).then((data) => data.json());
-// }
+var url = "http://localhost:5000/user/signin";
 
 function Login() {
-  const [username, setUserName] = useState();
-  const [password, setPassword] = useState();
+  const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
 
-  const history = createBrowserHistory();
+  const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // console.log(data);
-    // history.push("/");
-    // const data = await loginUser({
-    //   username,
-    //   password,
-    // });
     try {
-      let res = await fetch("https://reqres.in/api/login", {
+      let res = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username,
-          password,
+          email: username,
+          password: password,
         }),
       });
-      // let resJson = await res.json();
+      let resJson = await res.json();
       if (res.status === 200) {
         console.log("login thanh cong");
-        history.push("/");
+        console.log(resJson);
+        //sessionStorage.setItem("token", JSON.stringify(resJson));
+        navigate("/");
       } else {
         console.log("login that bai");
       }
@@ -56,7 +44,7 @@ function Login() {
       <div className="wrapper">
         <div className="container">
           <div>
-            <div className="login-form">
+            <form onSubmit={handleLogin} className="login-form">
               <h2 className="heading-login"> Login </h2>
               <div className="input-group">
                 <input
@@ -85,7 +73,7 @@ function Login() {
                 id="login"
                 name="Login"
                 value="Login"
-                onClick={handleSubmit}
+                /* onClick={handleSubmit} */
               />
               <div className="register-form">
                 <p> Haven't got an account?</p>{" "}
@@ -102,7 +90,7 @@ function Login() {
                   <i className="fab fa-google"></i>
                 </Link>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>

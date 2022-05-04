@@ -11,28 +11,25 @@ import RegisterPage from "./components/pages/Register/Register";
 import ProductPage from "./components/pages/Products/Product/Product";
 import CartPage from "./components/pages/Products/Cart/Cart";
 import "./App.css";
-//import registerApi from "./api/registerAPI";
+// import { useNavigate } from "react-router-dom";
+
+// function setToken(userToken) {
+//   sessionStorage.setItem("token", JSON.stringify(userToken));
+// }
+
+// function getToken() {
+//   const tokenString = sessionStorage.getItem("token");
+//   const userToken = JSON.parse(tokenString);
+//   return userToken?.token;
+// }
 
 function App() {
-  // const [userList, setUserList] = useState([]);
-
-  // useEffect(() => {
-  //   const fetchUser = async () => {}
-  //   try {
-  //     const params = {
-  //       _page: 1,
-  //       _limit: 10,
-  //     };
-  //     const response = await registerApi.getAll(params);
-  //     console.log(response);
-  //     setUserList(response.data);
-  //   } catch (error) {
-  //     console.log ('Failed to fetch User Information:', error);
-  //   }
-
-  //   fetchUser();
-  // }, []);
-
+  // useNavigate();
+  // const token = getToken();
+  // if (!token) {
+  //   //navigate("/");
+  //   return <LoginPage setToken={setToken} />;
+  // }
   return (
     <>
       <Navbar />
