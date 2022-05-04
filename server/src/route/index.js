@@ -2,7 +2,6 @@ const express = require('express')
 const router = require('express-promise-router')()
 
 const UserController = require('../app/Controller/UserController')
-const ProductController = require('../app/Controller/ProductController')
 const { ValidateBody, ValidateParam, Schemas } = require('../Validation/Validate')
 
 const passport = require('passport')
