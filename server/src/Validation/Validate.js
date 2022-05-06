@@ -42,7 +42,7 @@ const Schemas = {
         Lastname: Joi.string().min(2).required(),
         Address: Joi.string().min(2).required(),
         Phone: Joi.string().regex(/^\d{3}-\d{3}-\d{4}$/).required(), 
-        email: Joi.string().regex(/^[a-z][a-z0-9_\.]{5,32}@(tnt\.store)(\.com)$/).email().required(),
+        email: Joi.string().regex(/^[a-z][a-z0-9_\.]{5,32}@(gmail\.com)$/).email().required(),
     }),
 
     SignUpSchema: Joi.object().keys({
@@ -50,7 +50,7 @@ const Schemas = {
         Lastname: Joi.string().min(2),
         Address: Joi.string().min(2).required(),
         Phone: Joi.string().regex(/^\d{3}\d{3}\d{4}$/), 
-        email: Joi.string().regex(/^[a-z][a-z0-9_\.]{5,32}@(tnt\.store)$/).email().required(),
+        email: Joi.string().regex(/^[a-z][a-z0-9_\.]{5,32}@(gmail\.com)$/).email().required(),
         password: Joi.string().min(8),
         confirmPassword: Joi.string().valid(Joi.ref('password')).required()
     }),
