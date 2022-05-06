@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer/Footer";
@@ -10,6 +10,7 @@ import LoginPage from "./components/pages/Login/Login";
 import RegisterPage from "./components/pages/Register/Register";
 import ProductPage from "./components/pages/Products/Product/Product";
 import CartPage from "./components/pages/Products/Cart/Cart";
+import CheckoutPage from "./components/pages/Checkout/Checkout";
 import "./App.css";
 // import { useNavigate } from "react-router-dom";
 
@@ -40,6 +41,7 @@ function App() {
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
       </Routes>
