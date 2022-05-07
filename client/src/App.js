@@ -12,6 +12,8 @@ import ProductPage from "./components/pages/Products/Product/Product";
 import CartPage from "./components/pages/Products/Cart/Cart";
 import CheckoutPage from "./components/pages/Checkout/Checkout";
 import "./App.css";
+import UserInfoPage from "./components/pages/UserInfo/UserInfo";
+import UpdateUserPage from "./components/pages/UserInfo/UpdateUser";
 // import { useNavigate } from "react-router-dom";
 
 // function setToken(userToken) {
@@ -44,6 +46,8 @@ function App() {
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/user/:id" element={<UserInfoPage />} />
+        <Route path="/updateuserinfor" element={<UpdateUserPage />} />
       </Routes>
       <Footer />
     </>

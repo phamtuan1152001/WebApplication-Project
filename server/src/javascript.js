@@ -31,14 +31,6 @@ app.get('/', (req, res, next) => {
 
 app.use("/user", index);
 app.use("/", product);
-// // test - song tuan
-// const cors = require("cors");
-// app.use(cors());
-// app.use("/testlogin", (req, res) => {
-//   res.send({
-//     token: "test123",
-//   });
-// });
 
 // Catch 404 Errors and forward them to error handler
 app.use((req, res, next) => {

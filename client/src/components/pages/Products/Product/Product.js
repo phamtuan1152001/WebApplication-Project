@@ -29,7 +29,7 @@ function Product() {
     };
     getProduct();
   }, []);
-  // console.log(product);
+  console.log(product);
   // console.log(...new Set(product.map((item) => item.pID.Image)));
 
   const Loading = () => {

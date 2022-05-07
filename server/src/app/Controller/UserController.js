@@ -60,11 +60,12 @@ async function SignIn (req, res, next){
     res.setHeader('Authorization', token)
 
     const user = await User.findOne(
-        {email: req.body.email},
-        {_id: 0,Firstname: 1, Lastname: 1}
-    )
-    res.send(user)
+      { email: req.body.email },
+      { _id: 1, Firstname: 1, Lastname: 1 }
+    );
+    res.send(user);
     //return res.status(200).json({success: true})
+    return res.send(user);
     next()
 }
 

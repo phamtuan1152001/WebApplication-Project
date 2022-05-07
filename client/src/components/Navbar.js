@@ -2,8 +2,80 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { useSelector } from "react-redux";
+
 function Navbar() {
   const state = useSelector((state) => state.handleCart);
+
+  const token = window.sessionStorage.getItem("token");
+  const userToken = JSON.parse(token);
+  //console.log(userToken);
+
+  const BtnAccess = () => {
+    return (
+      <div className="button-nav d-flex">
+        <button className="btn btn-outline-info mr-2">
+          <Link to="/login" className="nav-link">
+            <span>
+              <i className="fa-solid fa-arrow-right-to-bracket mr-2"></i>
+              Login
+            </span>
+          </Link>
+        </button>
+        <button className="btn btn-outline-info mr-2">
+          <Link to="/register" className="nav-link">
+            <span>
+              <i className="fa-solid fa-user-plus mr-2"></i>
+              Register
+            </span>
+          </Link>
+        </button>
+        <button className="btn btn-outline-info mr-2">
+          <Link to="/cart" className="nav-link">
+            <span>
+              <i className="fa-solid fa-cart-shopping mr-2"></i>
+              Cart ({state.length})
+            </span>
+          </Link>
+        </button>
+      </div>
+    );
+  };
+
+  const handleLogout = () => {
+    window.sessionStorage.removeItem("token");
+    window.location.reload(false);
+  };
+
+  const BtnUser = () => {
+    return (
+      <div className="button-nav d-flex">
+        <button className="btn btn-outline-info mr-2">
+          <Link to={`/user/${userToken._id}`} className="nav-link">
+            <span>
+              <i class="fa-solid fa-user mr-2"></i>
+              Hello {userToken.Firstname}
+            </span>
+          </Link>
+        </button>
+        <button className="btn btn-outline-info mr-2" onClick={handleLogout}>
+          <Link to="/" className="nav-link">
+            <span>
+              <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i>
+              Logout
+            </span>
+          </Link>
+        </button>
+        <button className="btn btn-outline-info mr-2">
+          <Link to="/cart" className="nav-link">
+            <span>
+              <i className="fa-solid fa-cart-shopping mr-2"></i>
+              Cart ({state.length})
+            </span>
+          </Link>
+        </button>
+      </div>
+    );
+  };
 
   return (
     <>
@@ -35,32 +107,7 @@ function Navbar() {
                 </Link>
               </li>
             </ul>
-            <div className="button-nav d-flex">
-              <button className="btn btn-outline-info mr-2">
-                <Link to="/login" className="nav-link">
-                  <span>
-                    <i className="fa-solid fa-arrow-right-to-bracket mr-2"></i>
-                    Login
-                  </span>
-                </Link>
-              </button>
-              <button className="btn btn-outline-info mr-2">
-                <Link to="/register" className="nav-link">
-                  <span>
-                    <i className="fa-solid fa-user-plus mr-2"></i>
-                    Register
-                  </span>
-                </Link>
-              </button>
-              <button className="btn btn-outline-info mr-2">
-                <Link to="/cart" className="nav-link">
-                  <span>
-                    <i className="fa-solid fa-cart-shopping mr-2"></i>
-                    Cart ({state.length})
-                  </span>
-                </Link>
-              </button>
-            </div>
+            {userToken === null ? <BtnAccess /> : <BtnUser />}
           </div>
         </div>
       </nav>
