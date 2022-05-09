@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import "./ProductList.css";
 
 function ProductList({ products }) {
+  //console.log(products[0].pID);
   return (
     <>
-      {products.map((product) => (
-        <div className="products-list-item" key={product._id}>
+      {products.map((product, index) => (
+        <div className="products-list-item" key={index}>
           <img
             className="img-products"
             src={product.Image}

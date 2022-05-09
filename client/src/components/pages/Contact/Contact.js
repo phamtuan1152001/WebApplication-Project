@@ -1,6 +1,4 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import "./Contact.css";
 
 function Contact() {
   return (
@@ -53,4 +51,5 @@ function Contact() {
     </>
   );
 }
+
 export default Contact;

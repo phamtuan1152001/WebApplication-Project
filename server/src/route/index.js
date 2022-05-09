@@ -2,7 +2,7 @@ const express = require('express')
 const router = require('express-promise-router')()
 
 const UserController = require('../app/Controller/UserController')
-const ProductController = require('../app/Controller/ProductController')
+const user = require('../app/Models/LoginModel')
 const { ValidateBody, ValidateParam, Schemas } = require('../Validation/Validate')
 
 const passport = require('passport')
@@ -22,7 +22,11 @@ router.route('/auth/facebook').post(passport.authenticate('facebook-token', {ses
 
 router.route('/signup').post(ValidateBody(Schemas.SignUpSchema), UserController.SignUp)
 
-router.route('/signin').post(ValidateBody(Schemas.SignInSchema),passport.authenticate('local', ({session: false})), UserController.SignIn)
+router.route('/signin').post(ValidateBody(Schemas.SignInSchema),passport.authenticate('local', ({session: false})), UserController.SignIn, (res, req) => {
+    // const {Firstname, Lastname} = req.body
+    // const User = new user({Firstname, Lastname})
+    // console.log(User)
+})
 
 router.route('/secret').get(passport.authenticate('jwt', {session: false}), UserController.Secret)
 

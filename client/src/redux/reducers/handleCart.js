@@ -34,7 +34,7 @@ const handleCart = (state = cart, action) => {
       //   );
       // }
       return (state = state.filter((x) => {
-        return x.id !== action.payload.id;
+        return x._id !== action.payload._id;
       }));
       break;
 

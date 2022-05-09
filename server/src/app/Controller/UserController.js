@@ -58,7 +58,15 @@ async function SignIn (req, res, next){
     //Assign token
     const token = await encodedToken(req.user._id)
     res.setHeader('Authorization', token)
-    return res.status(200).json({success: true})
+
+    const user = await User.findOne(
+      { email: req.body.email },
+      { _id: 1, Firstname: 1, Lastname: 1 }
+    );
+    res.send(user);
+    //return res.status(200).json({success: true})
+    return res.send(user);
+    next()
 }
 
 async function Secret (req, res, next){
