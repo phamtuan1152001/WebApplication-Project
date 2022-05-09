@@ -45,6 +45,7 @@ body{
 }
 
 #login:hover{
+  text-decoration: none;
   color: black;
   background-color: rgb(199, 189, 189);
   transition: ease-in-out 0.5s;
