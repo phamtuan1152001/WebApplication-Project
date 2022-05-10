@@ -3,7 +3,7 @@ const JwtStratery = require('passport-jwt').Strategy
 const LocalStrategy = require('passport-local').Strategy
 const GooglePlusTokenStratery = require('passport-google-plus-token')
 const FacebookTokenStratery = require('passport-facebook-token')
-const { ExtractJwt } = require('passport-jwt')
+const ExtractJwt = require('passport-jwt').ExtractJwt
 
 
 const { JWT_SECRET, Auth } = require('../index')

@@ -6,7 +6,7 @@ const user = require('../app/Models/LoginModel')
 const { ValidateBody, ValidateParam, Schemas } = require('../Validation/Validate')
 
 const passport = require('passport')
-const passportConfig = require('../config/db/passport')
+require('../config/db/passport')
 
 router.route('/')
     .get(UserController.index)
@@ -22,12 +22,8 @@ router.route('/auth/facebook').post(passport.authenticate('facebook-token', {ses
 
 router.route('/signup').post(ValidateBody(Schemas.SignUpSchema), UserController.SignUp)
 
-router.route('/signin').post(ValidateBody(Schemas.SignInSchema),passport.authenticate('local', ({session: false})), UserController.SignIn, (res, req) => {
-    // const {Firstname, Lastname} = req.body
-    // const User = new user({Firstname, Lastname})
-    // console.log(User)
-})
+router.route('/signin').post(ValidateBody(Schemas.SignInSchema),passport.authenticate('local', ({session: false})), UserController.SignIn)
 
-router.route('/secret').get(passport.authenticate('jwt', {session: false}), UserController.Secret)
+router.route('/api/secret').get(passport.authenticate('jwt', {session: false}), UserController.Secret)
 
 module.exports = router

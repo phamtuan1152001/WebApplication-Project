@@ -8,7 +8,7 @@ function encodedToken(userID){
         iss: 'Le Quang Tuan',
         sub: userID,
         iat: new Date().getTime(),
-        exp: new Date().setTime(new Date().getDate() + 3)
+        exp: new Date().setDate(new Date().getDate() + 3)
     },  JWT_SECRET)
 }
 
@@ -61,10 +61,9 @@ async function SignIn (req, res, next){
 
     const user = await User.findOne(
         {email: req.body.email},
-        {_id: 0,Firstname: 1, Lastname: 1}
+        {Firstname: 1, Lastname: 1}
     )
-    res.send(user)
-    //return res.status(200).json({success: true})
+    return res.send(user)
     next()
 }
 

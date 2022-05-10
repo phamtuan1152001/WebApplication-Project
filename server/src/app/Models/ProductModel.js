@@ -17,7 +17,7 @@ const product = new Schema({
         type: String
     },
     Price: {
-        type: String
+        type:  Number
     },
     pID: {
         type: String

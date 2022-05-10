@@ -1,12 +1,13 @@
 const express = require("express");
+require('dotenv').config();
 const app = express();
 const bodyParser = require('body-parser')
 const morgan = require("morgan");
 
-require('dotenv').config();
 require('./config/db/connect').mongoURI;
 const index = require('./route/index')
 const product = require('./route/product')
+const payment = require('./route/payment')
 
 // Middlewares
 app.use(morgan('dev'))
@@ -31,14 +32,8 @@ app.get('/', (req, res, next) => {
 
 app.use("/user", index);
 app.use("/", product);
-// // test - song tuan
-// const cors = require("cors");
-// app.use(cors());
-// app.use("/testlogin", (req, res) => {
-//   res.send({
-//     token: "test123",
-//   });
-// });
+app.use("/v1/api", payment);
+
 
 // Catch 404 Errors and forward them to error handler
 app.use((req, res, next) => {
