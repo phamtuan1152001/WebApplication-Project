@@ -33,13 +33,13 @@ function Register() {
           confirmPassword: passconfirm,
         }),
       });
-      // let resJson = await res.json();
-      if (res.status === 200) {
+      let resJson = await res.json();
+      if (res.status === 200 || res.status === 201) {
         console.log("register thanh cong  ");
         navigate("/login");
       } else {
         console.log("register that bai");
-        // console.log(resJson.details[0].message);
+        console.log(resJson.details[0].message);
       }
     } catch (error) {
       console.log(error);

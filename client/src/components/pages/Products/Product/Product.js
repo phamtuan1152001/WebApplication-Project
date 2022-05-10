@@ -29,7 +29,7 @@ function Product() {
     };
     getProduct();
   }, []);
-  // console.log(product);
+  console.log(product);
   // console.log(...new Set(product.map((item) => item.pID.Image)));
 
   const Loading = () => {
@@ -62,7 +62,7 @@ function Product() {
                   <span>Rating: </span>
                   {item.pID.rating && item.pID.rating.rate}
                   <span>
-                    <i class="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
                   </span>
                 </h3>
                 <p>
@@ -71,7 +71,6 @@ function Product() {
                 </p>
                 <h4>{item.pID.Descriptions.Designs}</h4>
                 <button onClick={() => addProduct(item)}>Add to Cart</button>
-                <button className="product-cart">Go to Cart</button>
               </div>
             </div>
           </div>

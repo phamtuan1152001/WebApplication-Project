@@ -9,7 +9,7 @@ var url = "http://localhost:5000/user/signin";
 function Login() {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-
+  
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -27,10 +27,12 @@ function Login() {
       });
       let resJson = await res.json();
       if (res.status === 200) {
-        console.log("login thanh cong");
-        console.log(resJson);
-        //sessionStorage.setItem("token", JSON.stringify(resJson));
+        // console.log("login thanh cong");
+        // console.log(resJson);
+        window.sessionStorage.setItem("token", JSON.stringify(resJson));
+        alert("Login thanh cong!");
         navigate("/");
+        window.location.reload(false);
       } else {
         console.log("login that bai");
       }
@@ -38,7 +40,6 @@ function Login() {
       console.log(error);
     }
   };
-
   return (
     <>
       <div className="wrapper">

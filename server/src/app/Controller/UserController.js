@@ -63,7 +63,8 @@ async function SignIn (req, res, next){
         {email: req.body.email},
         {Firstname: 1, Lastname: 1}
     )
-    return res.send(user)
+    //return res.status(200).json({success: true})
+    return res.send(user);
     next()
 }
 
