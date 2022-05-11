@@ -14,6 +14,15 @@ import CheckoutPage from "./components/pages/Checkout/Checkout";
 import "./App.css";
 import UserInfoPage from "./components/pages/UserInfo/UserInfo";
 import UpdateUserPage from "./components/pages/UserInfo/UpdateUser";
+import { Toggle } from "./components/Theme/Toggle";
+import { useDarkMode } from "./components/Theme/useDarkMode";
+import {
+  GlobalStyles,
+  lightTheme,
+  darkTheme,
+} from "./components/Theme/globalStyles";
+import styled, { ThemeProvider } from "styled-components";
+
 // import { useNavigate } from "react-router-dom";
 
 // function setToken(userToken) {
@@ -25,7 +34,10 @@ import UpdateUserPage from "./components/pages/UserInfo/UpdateUser";
 //   const userToken = JSON.parse(tokenString);
 //   return userToken?.token;
 // }
-
+const Container = styled.div`
+  max-width: 50%;
+  margin: 5px;
+`;
 function App() {
   // useNavigate();
   // const token = getToken();
@@ -33,9 +45,17 @@ function App() {
   //   //navigate("/");
   //   return <LoginPage setToken={setToken} />;
   // }
+  const [theme, toggleTheme] = useDarkMode();
+  const themeMode = theme === "light" ? lightTheme : darkTheme;
   return (
     <>
       <Navbar />
+      <ThemeProvider theme={themeMode}>
+        <Container>
+          <GlobalStyles />
+          <Toggle theme={theme} toggleTheme={toggleTheme} />
+        </Container>
+      </ThemeProvider>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/products" element={<ProductsPage />} />
