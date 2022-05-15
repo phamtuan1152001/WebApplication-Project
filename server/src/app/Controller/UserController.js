@@ -114,7 +114,7 @@ async function SignIn (req, res, next){
         {Firstname: 1, Lastname: 1, roles: 1}
     ).populate('roles')
     //return res.status(200).json({success: true})
-    return res.send(user);
+    return res.send({user, token});
     next()
 }
 
