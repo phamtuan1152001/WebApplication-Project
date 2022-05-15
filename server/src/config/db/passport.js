@@ -4,6 +4,7 @@ const LocalStrategy = require('passport-local').Strategy
 const GooglePlusTokenStratery = require('passport-google-plus-token')
 const FacebookTokenStratery = require('passport-facebook-token')
 const ExtractJwt = require('passport-jwt').ExtractJwt
+const bcrypt = require('bcryptjs')
 
 
 const { JWT_SECRET, Auth } = require('../index')
@@ -30,13 +31,12 @@ passport.use(new LocalStrategy({
 }, async (email, password, done) =>{
     try {
         const user = await User.findOne({email})
+            .populate('roles')
     
         if (!user) return done(null, false)
     
-        //Check password
-        const isCorrectPassword = await user.isValidPassword(password)
-    
-        if (!isCorrectPassword) return done(null, false)
+        //Check password    
+        if (!bcrypt.compare(password, user.password)) return done(null, false)
         done(null, user)
     } catch (error) {
         done(error, false)

@@ -4,6 +4,7 @@ const router = require('express-promise-router')()
 const UserController = require('../app/Controller/UserController')
 const user = require('../app/Models/LoginModel')
 const { ValidateBody, ValidateParam, Schemas } = require('../Validation/Validate')
+const  auth  = require('../config/db/auth')
 
 const passport = require('passport')
 require('../config/db/passport')
@@ -24,6 +25,9 @@ router.route('/signup').post(ValidateBody(Schemas.SignUpSchema), UserController.
 
 router.route('/signin').post(ValidateBody(Schemas.SignInSchema),passport.authenticate('local', ({session: false})), UserController.SignIn)
 
+// Route test
 router.route('/api/secret').get(passport.authenticate('jwt', {session: false}), UserController.Secret)
+
+router.route('/api/test').get(auth.verifyToken,auth.isAdmin, (req, res) => res.send("Le Quang Tuan"))
 
 module.exports = router

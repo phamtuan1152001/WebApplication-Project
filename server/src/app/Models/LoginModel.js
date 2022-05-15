@@ -3,7 +3,6 @@ const Schema = mongoose.Schema
 
 const bcrypt = require('bcryptjs')
 
-
 const Login = new Schema({
     Firstname: {
         type: String, 
@@ -30,6 +29,12 @@ const Login = new Schema({
         type: String, 
         maxLength: 50,
     },
+    roles: [
+        {
+          type: Schema.Types.String,
+          ref: "Role",
+        },
+      ],
     AuthGoogleID: {
         type: String,
         default: null
@@ -64,13 +69,5 @@ Login.pre('save', async function(next){
         next(error)
     }
 })
-
-Login.methods.isValidPassword = async function(newPassword){
-    try {
-        return await bcrypt.compare(newPassword, this.password)
-    } catch (error) {
-        throw new Error(error)
-    }
-}
 
 module.exports = mongoose.model('Login', Login)

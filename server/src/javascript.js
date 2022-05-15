@@ -3,11 +3,14 @@ require('dotenv').config();
 const app = express();
 const bodyParser = require('body-parser')
 const morgan = require("morgan");
+const cors = require("cors")
 
 require('./config/db/connect').mongoURI;
 const index = require('./route/index')
-const product = require('./route/product')
-const payment = require('./route/payment')
+const product = require('./route/user/product')
+const payment = require('./route/user/payment')
+
+app.use(cors())
 
 // Middlewares
 app.use(morgan('dev'))

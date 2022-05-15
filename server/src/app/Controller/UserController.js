@@ -1,4 +1,7 @@
 const User = require('../Models/LoginModel')
+const db = require('../Models')
+const ROLES = db.ROLES
+const Role = require('../Models/Role')
 const jwt = require('jsonwebtoken')
 
 const { JWT_SECRET } = require('../../config/index')
@@ -29,29 +32,76 @@ async function newUser (req, res, next){
 const getUser = async (req, res, next) => {
     const { userID } = req.value.params
 
-    const user = await User.findById(userID)
+    const user = await User.findOne(
+        {_id: userID},
+        {
+            Firstname: 1,
+            Lastname: 1, 
+            Address: 1,
+            Phone: 1,
+            roles: 1
+        })
 
     return res.status(200).json({user})
 }
 
 async function SignUp (req, res, next){
-    const {Firstname, Lastname, Address, Phone, email, password} = req.body
+    const {Firstname, Lastname, Address, Phone, roles, email, password} = req.body
 
     //Check email already or not.
     const foundUser = await User.findOne({email})
     if (foundUser){
         return res.status(403).json({error: {message: 'Email is already!!'}})
     }
+    // Check role
+    if (req.body.roles) {
+        if (!ROLES[0].includes(req.body.roles)){
+            res.status(400).send({
+                message: `Failed! Role ${req.body.roles} does not exist!`
+            })
+            return
+        }
+    }
 
     //Create new user.
-    const newUser = new User({Firstname, Lastname, Address, Phone, email, password})
-    newUser.save()
+    const newUser = new User({Firstname, Lastname, Address, Phone, roles, email, password})
 
-    //Encode a token.
-    const token = encodedToken(newUser._id)
-
-    res.setHeader('Authorization', token)
-    return res.status(201).json({success: true})
+    newUser.save((err, user) => {
+        if (err) {
+            res.status(500).json({
+                message: err
+            })
+            return
+        }
+        // Create admin account
+        if (req.body.roles) {
+            Role.find({
+                name: req.body.roles
+            },(err, role) => {
+                if (err) {
+                    res.status(500).json({
+                        message: err
+                    })
+                    return
+                }
+                user.roles = role[0]._id
+                user.save()
+            })
+        }else {
+            // Create user account
+            Role.findOne({name: 'user'}, (err, role) => {
+                if (err) {
+                    res.status(500).json({
+                        message: err 
+                    });
+                    return;
+                  }
+                  user.roles = [role._id]
+                  user.save()
+            })
+        }
+    })
+    return res.status(201).json('Successfully!!')
 }
 
 async function SignIn (req, res, next){
@@ -61,8 +111,8 @@ async function SignIn (req, res, next){
 
     const user = await User.findOne(
         {email: req.body.email},
-        {Firstname: 1, Lastname: 1}
-    )
+        {Firstname: 1, Lastname: 1, roles: 1}
+    ).populate('roles')
     //return res.status(200).json({success: true})
     return res.send(user);
     next()
