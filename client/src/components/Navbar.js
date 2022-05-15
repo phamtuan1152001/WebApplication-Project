@@ -76,7 +76,6 @@ function Navbar() {
       </div>
     );
   };
-
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -96,11 +95,11 @@ function Navbar() {
                   Products
                 </Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link to="/services" className="nav-link">
                   Services
                 </Link>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <Link to="/contact" className="nav-link">
                   Contact

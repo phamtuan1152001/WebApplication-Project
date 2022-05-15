@@ -19,3 +19,9 @@
  max-width: 300px;
  height: 180px;
 }
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
