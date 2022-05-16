@@ -2,13 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { useSelector } from "react-redux";
+import AuthService from "../services/auth.service";
 
 function Navbar() {
   const state = useSelector((state) => state.handleCart);
 
-  const token = window.sessionStorage.getItem("token");
-  const userToken = JSON.parse(token);
-  //console.log(userToken);
+  const user = AuthService.getCurrentUser();
 
   const BtnAccess = () => {
     return (
@@ -42,18 +41,21 @@ function Navbar() {
   };
 
   const handleLogout = () => {
-    window.sessionStorage.removeItem("token");
-    window.location.reload(false);
+    AuthService.logout();
+    window.location.reload();
   };
 
   const BtnUser = () => {
     return (
       <div className="button-nav d-flex">
-        <button className="btn btn-outline-info mr-2">
-          <Link to={`/user/${userToken._id}`} className="nav-link">
+        <button
+          style={{ width: "250px" }}
+          className="btn btn-outline-info mr-2"
+        >
+          <Link to={`/user/${user._id}`} className="nav-link">
             <span>
               <i class="fa-solid fa-user mr-2"></i>
-              Hello {userToken.Firstname}
+              Hello {user.user.Firstname + " " + user.user.Lastname}
             </span>
           </Link>
         </button>
@@ -106,7 +108,7 @@ function Navbar() {
                 </Link>
               </li>
             </ul>
-            {userToken === null ? <BtnAccess /> : <BtnUser />}
+            {user === null ? <BtnAccess /> : <BtnUser />}
           </div>
         </div>
       </nav>

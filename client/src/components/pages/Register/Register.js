@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import AuthService from "../../../services/auth.service";
 import "./Register.css";
 
-var url = "http://localhost:5000/user/signup";
+// var url = "http://localhost:5000/user/signup";
 
 function Register() {
   const [firstname, setFirstName] = useState("");
@@ -16,34 +17,53 @@ function Register() {
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
+    // e.preventDefault();
+    // try {
+    //   let res = await fetch(url, {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //       Firstname: firstname,
+    //       Lastname: lastname,
+    //       Address: address,
+    //       Phone: phone,
+    //       email: email,
+    //       password: password,
+    //       confirmPassword: passconfirm,
+    //     }),
+    //   });
+    //   let resJson = await res.json();
+    //   if (res.status === 200 || res.status === 201) {
+    //     console.log("register thanh cong  ");
+    //     navigate("/login");
+    //   } else {
+    //     console.log("register that bai");
+    //     console.log(resJson.details[0].message);
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // }
     e.preventDefault();
-    try {
-      let res = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          Firstname: firstname,
-          Lastname: lastname,
-          Address: address,
-          Phone: phone,
-          email: email,
-          password: password,
-          confirmPassword: passconfirm,
-        }),
-      });
-      let resJson = await res.json();
-      if (res.status === 200 || res.status === 201) {
-        console.log("register thanh cong  ");
+    AuthService.register(
+      firstname,
+      lastname,
+      address,
+      phone,
+      email,
+      password,
+      passconfirm
+    ).then(
+      () => {
+        alert("Register thanh cong!");
         navigate("/login");
-      } else {
-        console.log("register that bai");
-        console.log(resJson.details[0].message);
+        // window.location.reload();
+      },
+      (error) => {
+        console.log("Register that bai!");
       }
-    } catch (error) {
-      console.log(error);
-    }
+    );
   };
 
   return (
