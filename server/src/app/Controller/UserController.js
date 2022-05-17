@@ -81,7 +81,7 @@ async function SignUp (req, res, next){
     return res.status(201).json('Successfully!!')
 }
 
-// API SIGN IN
+// API SIGN IN WITH LOCAL ACCOUNT
 async function SignIn (req, res, next){
     //Assign token
     const token = await encodedToken(req.user._id)
@@ -93,7 +93,6 @@ async function SignIn (req, res, next){
     ).populate('roles')
     //return res.status(200).json({success: true})
     return res.send({user, token});
-    next()
 }
 
 
