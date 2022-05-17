@@ -130,11 +130,11 @@ async function AddTrendingProduct(req, res) {
     //     if (err) res.status(403).json({error: {message: "Erorrr!!"}})
     //     const productID = product._id.toString()
     //     const trending = new Trending({productID})
-    //     Trending.findOne({productID}, function(err, check) {
-    //         if (check.productID === productID){
-    //             res.status(401).json("Product added")
-    //         }
+    //     const checkProduct =await Trending.findOne({productID}, function(err, check) {
     //     })
+    //     if (check.productID === productID){
+    //         res.status(401).json("Product added")
+    //     }
     //     trending.save()
     // })
     // res.status(200).json("Added Trending Product Successfully")

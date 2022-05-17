@@ -3,13 +3,11 @@ const router = require('express-promise-router')()
 
 const ProductController = require('../../app/Controller/ProductController')
 const auth = require('../../config/db/auth')
-const passport = require('passport')
-require('../../config/db/passport')
 
 // Route User
-router.route('/search/:key').get(passport.authenticate('jwt', {session: false}), ProductController.Search)
+router.route('/search/:key').get(ProductController.Search)
 
-router.route('/products/:keyProduct').get(passport.authenticate('jwt', {session: false}), ProductController.DetailProcduct)
+router.route('/products/:keyProduct').get(ProductController.DetailProcduct)
 
 router.route('/products').get(ProductController.getAllProduct)
 
