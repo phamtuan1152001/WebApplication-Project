@@ -1,11 +1,11 @@
-const mongoose = require('mongoose');
-
 const products = require('../Models/ProductModel')
-const categories = mongoose.model('categories')
+const BestSeller = require('../Models/BestSellerModel')
 const detail = require('../Models/Detail')
 
 
-// Show all products belong to its category in database
+// API FOR USER
+
+// Show all products in database
 async function getAllProduct(req, res) {
     const product = await products.find();
 
@@ -22,10 +22,6 @@ async function DetailProcduct (req, res){
       .find({ pID: { $regex: product._id } })
       .populate({
         path: "pID",
-        populate: {
-          path: "Cid",
-          select: "name",
-        },
       });
 
     
@@ -46,8 +42,110 @@ async function Search (req, res){
     res.send(data)
 }
 
+// API FOR ADMIN
+
+async function CreateProduct(req, res) {
+    const { Name, Price, Descriptions, Image, category, size, color} = req.body
+
+    // Check product already or not
+    const checkProduct = await products.findOne({Name})
+
+    if (checkProduct){
+        return res.status(403).json({error: {message: 'The product had already in the system!!'}})   
+    }
+
+    // Create product
+    const newProduct = new products({ Name, Price, Descriptions, Image, category})
+    newProduct.save()
+
+    // Create prduct detail
+    const pID = newProduct._id.toString()
+    const detailProduct = new detail({pID, size, color})
+    detailProduct.save()
+  
+    res.status(200).json("Created!!")
+}
+
+
+function DeleteProduct(req, res) {
+    products.findOneAndRemove({Name: req.body.Name}, function(err, product){
+        if (err) res.status(403).json({error: {message: "The product is not already!!"}})
+        detail.findOneAndRemove({pID: product._id.toString()}, err => {
+            if (err) res.status(402).json({error: {message: "The product is not already!!"}})
+        })
+        res.status(200).json("Deleted!!")
+    })
+}
+
+async function UpdateProduct(req, res) {
+    products.findById(req.params.id, async function(err, product){
+        if (err) res.status(403).json({error: {message: "Erorrr!!"}})
+        // Update product
+        product.Name = req.body.Name
+        product.Price = req.body.Price
+        product.Descriptions = req.body.Descriptions
+        product.Image = req.body.Image
+        product.category = req.body.category
+
+        //Check the properties of product had already or not
+        const checkProduct = await products.findOne(
+            {
+                Name: req.body.Name,
+            })
+        if (checkProduct) res.status(401).json({error: {message: "The properties of product had already!!" }})
+        product.save()
+
+        // Update detail product
+        detail.findOne({pID: req.params.id}, function(err, details){
+            if (err) res.status(403).json({error: {message: "Erorrr!!"}})
+            details.size = req.body.size
+            details.color = req.body.color
+            details.save() 
+        })
+        res.status(200).json("Updated!!")
+    })
+}
+
+async function AddBestSellerProduct(req, res) {
+    products.findById(req.params.id, function(err, product){
+        if (err) res.status(403).json({error: {message: "Erorrr!!"}})
+        const productID = product._id.toString()
+        const bsl = new BestSeller({productID})
+        bsl.save()
+    })
+}
+
+async function GetBestSellerProduct(req, res) {
+    res.send("getted!!")
+}
+
+async function DeleteBestSellerProduct(req, res) {
+    res.send("deleted!!")
+}
+
+async function AddTrendingProduct(req, res) {
+    res.send("addedd!!")
+}
+
+async function GetTrendingProduct(req, res) {
+    res.send("getted!!")
+}
+
+async function DeleteTrendingProduct(req, res) {
+    res.send("deleted!!")
+}
+
 module.exports = {
     Search,
     DetailProcduct,
-    getAllProduct
+    getAllProduct,
+    CreateProduct,
+    DeleteProduct,
+    UpdateProduct,
+    AddBestSellerProduct,
+    GetBestSellerProduct,
+    AddTrendingProduct,
+    DeleteBestSellerProduct,
+    GetTrendingProduct,
+    DeleteTrendingProduct
 }

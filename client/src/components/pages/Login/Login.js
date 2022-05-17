@@ -3,42 +3,66 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
+import AuthService from "../../../services/auth.service";
 
-var url = "http://localhost:5000/user/signin";
+// var url = "http://localhost:5000/user/signin";
+
+// const required = (value) => {
+//   if (!value) {
+//     return (
+//       <div className="alert alert-danger" role="alert">
+//         This field is required!
+//       </div>
+//     );
+//   }
+// };
 
 function Login() {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  // const [loading, setLoading] = useState(false);
+  // const [message, setMessage] = useState("");
 
-  const navigate = useNavigate();
+  let navigate = useNavigate();
 
   const handleLogin = async (e) => {
+    // e.preventDefault();
+    // try {
+    //   let res = await fetch(url, {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //       email: username,
+    //       password: password,
+    //     }),
+    //   });
+    //   let resJson = await res.json();
+    //   if (res.status === 200) {
+    //     // console.log("login thanh cong");
+    //     // console.log(resJson);
+    //     window.sessionStorage.setItem("token", JSON.stringify(resJson));
+    //     alert("Login thanh cong!");
+    //     navigate("/");
+    //     window.location.reload(false);
+    //   } else {
+    //     console.log("login that bai");
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // }
     e.preventDefault();
-    try {
-      let res = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: username,
-          password: password,
-        }),
-      });
-      let resJson = await res.json();
-      if (res.status === 200) {
-        // console.log("login thanh cong");
-        // console.log(resJson);
-        window.sessionStorage.setItem("token", JSON.stringify(resJson));
+    AuthService.login(username, password).then(
+      () => {
         alert("Login thanh cong!");
         navigate("/");
-        window.location.reload(false);
-      } else {
-        console.log("login that bai");
+        window.location.reload();
+      },
+      (error) => {
+        console.log("Login that bai!");
       }
-    } catch (error) {
-      console.log(error);
-    }
+    );
   };
   return (
     <>

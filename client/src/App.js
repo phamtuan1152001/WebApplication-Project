@@ -36,7 +36,6 @@ import styled, { ThemeProvider } from "styled-components";
 // }
 const Container = styled.div`
   max-width: 50%;
-  margin: 5px;
 `;
 function App() {
   // useNavigate();

@@ -2,7 +2,7 @@ const router = require('express-promise-router')()
 const stripe = require('stripe')(process.env.STRIPE)
 
 router.route('/payment').post(async (req, res) => {
-    stripe.customer.create({
+    stripe.customers.create({
         email: req.body.stripeEmail,
         source: req.body.stripeToken
     })
