@@ -7,8 +7,8 @@ const cors = require("cors")
 
 require('./config/db/connect').mongoURI;
 const index = require('./route/index')
-const product = require('./route/user/product')
-const payment = require('./route/user/payment')
+const product = require('./route/product')
+const payment = require('./route/payment')
 
 app.use(cors())
 

@@ -3,7 +3,8 @@ const Schema = mongoose.Schema
 
 const BestSellerProduct = new Schema({
     productID: {
-        type: String
+        type: Schema.Types.String,
+        ref: 'product'
     }
 })
 

@@ -1,8 +1,8 @@
 const express = require('express')
 const router = require('express-promise-router')()
 
-const ProductController = require('../../app/Controller/ProductController')
-const auth = require('../../config/db/auth')
+const ProductController = require('../app/Controller/ProductController')
+const auth = require('../config/db/auth')
 
 // Route User
 router.route('/search/:key').get(ProductController.Search)
@@ -21,14 +21,14 @@ router.route('/admin/delete-product').delete(auth.verifyToken, auth.isAdmin, Pro
 
 router.route('/admin/add-bestseller/:id').post(auth.verifyToken, auth.isAdmin, ProductController.AddBestSellerProduct)
 
-router.route('/admin/bestseller').get(ProductController.GetBestSellerProduct)
+router.route('/bestseller').get(ProductController.GetBestSellerProduct)
 
-router.route('/admin/delete-bestseller').delete(auth.verifyToken, auth.isAdmin, ProductController.DeleteBestSellerProduct)
+router.route('/admin/delete-bestseller/:id').delete(auth.verifyToken, auth.isAdmin, ProductController.DeleteBestSellerProduct)
 
 router.route('/admin/add-trending/:id').post(auth.verifyToken, auth.isAdmin, ProductController.AddTrendingProduct)
 
-// router.route('/admin/trending').get(ProductController.GetTrendingProduct)
+router.route('/trending').get(ProductController.GetTrendingProduct)
 
-// router.route('/admin/add-trending').delete(auth.verifyToken, auth.isAdmin, ProductController.DeleteTrendingProduct)
+router.route('/admin/delete-trending/:id').delete(auth.verifyToken, auth.isAdmin, ProductController.DeleteTrendingProduct)
 
 module.exports = router
