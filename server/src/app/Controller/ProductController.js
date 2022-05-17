@@ -1,5 +1,6 @@
 const products = require('../Models/ProductModel')
 const BestSeller = require('../Models/BestSellerModel')
+const Trending = require('../Models/TrendingModel')
 const detail = require('../Models/Detail')
 
 
@@ -116,7 +117,8 @@ async function AddBestSellerProduct(req, res) {
 }
 
 async function GetBestSellerProduct(req, res) {
-    res.send("getted!!")
+    const getBsl = await BestSeller.find({}).populate("productID")
+    res.send(getBsl)
 }
 
 async function DeleteBestSellerProduct(req, res) {
@@ -124,7 +126,18 @@ async function DeleteBestSellerProduct(req, res) {
 }
 
 async function AddTrendingProduct(req, res) {
-    res.send("addedd!!")
+    // products.findById(req.params.id, function(err, product){
+    //     if (err) res.status(403).json({error: {message: "Erorrr!!"}})
+    //     const productID = product._id.toString()
+    //     const trending = new Trending({productID})
+    //     Trending.findOne({productID}, function(err, check) {
+    //         if (check.productID === productID){
+    //             res.status(401).json("Product added")
+    //         }
+    //     })
+    //     trending.save()
+    // })
+    // res.status(200).json("Added Trending Product Successfully")
 }
 
 async function GetTrendingProduct(req, res) {
