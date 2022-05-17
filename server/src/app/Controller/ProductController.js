@@ -126,13 +126,12 @@ async function DeleteBestSellerProduct(req, res) {
 }
 
 async function AddTrendingProduct(req, res) {
-    // products.findById(req.params.id, function(err, product){
+    // products.findById(req.params.id, async function(err, product){
     //     if (err) res.status(403).json({error: {message: "Erorrr!!"}})
     //     const productID = product._id.toString()
     //     const trending = new Trending({productID})
-    //     const checkProduct =await Trending.findOne({productID}, function(err, check) {
-    //     })
-    //     if (check.productID === productID){
+    //     const checkProduct = await Trending.findOne({productID})
+    //     if (checkProduct.productID === productID){
     //         res.status(401).json("Product added")
     //     }
     //     trending.save()

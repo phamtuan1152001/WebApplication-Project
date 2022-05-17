@@ -111,7 +111,7 @@ async function SignIn (req, res, next){
 
     const user = await User.findOne(
         {email: req.body.email},
-        {Firstname: 1, Lastname: 1, roles: 1}
+        {Firstname: 1, Lastname: 1, Address: 1, Phone: 1, roles: 1, email: 1}
     ).populate('roles')
     //return res.status(200).json({success: true})
     return res.send({user, token});
