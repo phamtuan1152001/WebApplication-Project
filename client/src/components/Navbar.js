@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { useSelector } from "react-redux";
@@ -6,8 +6,21 @@ import AuthService from "../services/auth.service";
 
 function Navbar() {
   const state = useSelector((state) => state.handleCart);
-
+  const [currentUser, setCurrentUser] = useState(false);
+  const [admin, setAdmin] = useState(false);
   const user = AuthService.getCurrentUser();
+
+  useEffect(() => {
+    if (user) {
+      setCurrentUser(user.user.roles[0].name.includes("user"));
+      setAdmin(user.user.roles[0].name.includes("admin"));
+    }
+  }, []);
+
+  const handleLogout = () => {
+    AuthService.logout();
+    window.location.reload();
+  };
 
   const BtnAccess = () => {
     return (
@@ -40,11 +53,6 @@ function Navbar() {
     );
   };
 
-  const handleLogout = () => {
-    AuthService.logout();
-    window.location.reload();
-  };
-
   const BtnUser = () => {
     return (
       <div className="button-nav d-flex">
@@ -52,7 +60,7 @@ function Navbar() {
           style={{ width: "250px" }}
           className="btn btn-outline-info mr-2"
         >
-          <Link to={`/user/${user._id}`} className="nav-link">
+          <Link to={`/user/${user.user._id}`} className="nav-link">
             <span>
               <i class="fa-solid fa-user mr-2"></i>
               Hello {user.user.Firstname + " " + user.user.Lastname}
@@ -78,6 +86,33 @@ function Navbar() {
       </div>
     );
   };
+
+  const BtnAdmin = () => {
+    return (
+      <div className="button-nav d-flex">
+        <button
+          style={{ width: "250px" }}
+          className="btn btn-outline-info mr-2"
+        >
+          <Link to="/AdminPage" className="nav-link">
+            <span>
+              <i class="fa-solid fa-user mr-2"></i>
+              Hello {user.user.roles[0].name}
+            </span>
+          </Link>
+        </button>
+        <button className="btn btn-outline-info mr-2" onClick={handleLogout}>
+          <Link to="/" className="nav-link">
+            <span>
+              <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i>
+              Logout
+            </span>
+          </Link>
+        </button>
+      </div>
+    )
+  }
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -108,7 +143,7 @@ function Navbar() {
                 </Link>
               </li>
             </ul>
-            {user === null ? <BtnAccess /> : <BtnUser />}
+            {user === null ? <BtnAccess /> : currentUser && <BtnUser /> || admin && <BtnAdmin />}
           </div>
         </div>
       </nav>

@@ -1,15 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-function UserInfo() {
-  const { id } = useParams();
-  const [dataUser, setDataUser] = useState({});
+import React from "react";
+import { Link } from "react-router-dom";
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/user/${id}`)
-      .then((res) => res.json())
-      .then((data) => setDataUser(data.user));
-  }, []);
-  // console.log(dataUser);
+import AuthService from "../../../services/auth.service";
+function UserInfo() {
+  const userInfor = AuthService.getCurrentUser();
+  // console.log(userInfor);
 
   const ShowUserInfo = () => {
     return (
@@ -34,23 +29,23 @@ function UserInfo() {
           <tbody>
             <tr className="row">
               <td className="col-4">First name:</td>
-              <td className="col-8">{dataUser.Firstname}</td>
+              <td className="col-8">{userInfor.user.Firstname}</td>
             </tr>
             <tr className="row">
               <td className="col-4">Last name:</td>
-              <td className="col-8">{dataUser.Lastname}</td>
+              <td className="col-8">{userInfor.user.Lastname}</td>
             </tr>
             <tr className="row">
               <td className="col-4">Email:</td>
-              <td className="col-8">{dataUser.email}</td>
+              <td className="col-8">{userInfor.user.email}</td>
             </tr>
             <tr className="row">
               <td className="col-4">Phone number:</td>
-              <td className="col-8">{dataUser.Phone}</td>
+              <td className="col-8">{userInfor.user.Phone}</td>
             </tr>
             <tr className="row">
               <td className="col-4">Address:</td>
-              <td className="col-8">{dataUser.Address}</td>
+              <td className="col-8">{userInfor.user.Address}</td>
             </tr>
           </tbody>
         </table>

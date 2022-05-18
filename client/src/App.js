@@ -14,6 +14,11 @@ import CheckoutPage from "./components/pages/Checkout/Checkout";
 import "./App.css";
 import UserInfoPage from "./components/pages/UserInfo/UserInfo";
 import UpdateUserPage from "./components/pages/UserInfo/UpdateUser";
+import AdminPage from "./components/pages/Admin/AdminPage"
+import AddBestSellersPage from "./components/pages/Admin/ComponentAdmin/AddBestSellers";
+import AddTrendProductsPage from "./components/pages/Admin/ComponentAdmin/AddTrendProducts.";
+import DisplayBestSellerPage from "./components/pages/Admin/ComponentAdmin/DisplayBestSeller";
+import DisplayTrendProductPage from "./components/pages/Admin/ComponentAdmin/DisplayTrendProduct";
 import { Toggle } from "./components/Theme/Toggle";
 import { useDarkMode } from "./components/Theme/useDarkMode";
 import {
@@ -23,27 +28,10 @@ import {
 } from "./components/Theme/globalStyles";
 import styled, { ThemeProvider } from "styled-components";
 
-// import { useNavigate } from "react-router-dom";
-
-// function setToken(userToken) {
-//   sessionStorage.setItem("token", JSON.stringify(userToken));
-// }
-
-// function getToken() {
-//   const tokenString = sessionStorage.getItem("token");
-//   const userToken = JSON.parse(tokenString);
-//   return userToken?.token;
-// }
 const Container = styled.div`
   max-width: 50%;
 `;
 function App() {
-  // useNavigate();
-  // const token = getToken();
-  // if (!token) {
-  //   //navigate("/");
-  //   return <LoginPage setToken={setToken} />;
-  // }
   const [theme, toggleTheme] = useDarkMode();
   const themeMode = theme === "light" ? lightTheme : darkTheme;
   return (
@@ -67,6 +55,11 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/user/:id" element={<UserInfoPage />} />
         <Route path="/updateuserinfor" element={<UpdateUserPage />} />
+        <Route path="/AdminPage" element={<AdminPage />} />
+        <Route path="/addBestSeller" element={<AddBestSellersPage />} />
+        <Route path="/addTrendProduct" element={<AddTrendProductsPage />} />
+        <Route path="/displayBestSeller" element={<DisplayBestSellerPage />} />
+        <Route path="/displayTrendProduct" element={<DisplayTrendProductPage />} />
       </Routes>
       <Footer />
     </>

@@ -4,12 +4,27 @@ import { useDispatch } from "react-redux";
 import { deleteCart } from "../../../../redux/action";
 import { Link } from "react-router-dom";
 function Cart() {
+
+  const token = localStorage.getItem("user");
+
   const state = useSelector((state) => state.handleCart);
   const dispatch = useDispatch();
 
   const handleClose = (items) => {
     dispatch(deleteCart(items));
   };
+
+  
+  const tokenMessage = () => {
+    return (
+      <div>
+        <h1>You need to login before go to this page!</h1>
+      </div>
+    )
+  }
+  if (!token) {
+    return tokenMessage();
+  }
 
   const cartItems = (cartItem) => {
     console.log(cartItem);
