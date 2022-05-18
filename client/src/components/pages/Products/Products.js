@@ -38,7 +38,7 @@ function Products() {
   return (
     <>
       <div className="container">
-        <div className="row bg-light text-center mb-4">
+        <div className="row text-center mb-4">
           {/* <ProductSelection /> */}
           <div className="col">
             <button
