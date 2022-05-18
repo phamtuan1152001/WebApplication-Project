@@ -1,11 +1,12 @@
-const mongoose = require('mongoose');
-
 const products = require('../Models/ProductModel')
-const categories = mongoose.model('categories')
+const BestSeller = require('../Models/BestSellerModel')
+const Trending = require('../Models/TrendingModel')
 const detail = require('../Models/Detail')
 
 
-// Show all products belong to its category in database
+/*=====================API GET=====================*/
+
+// Show all products in database
 async function getAllProduct(req, res) {
     const product = await products.find();
 
@@ -22,10 +23,6 @@ async function DetailProcduct (req, res){
       .find({ pID: { $regex: product._id } })
       .populate({
         path: "pID",
-        populate: {
-          path: "Cid",
-          select: "name",
-        },
       });
 
     
@@ -46,8 +43,159 @@ async function Search (req, res){
     res.send(data)
 }
 
+// Get all best seller products
+async function GetBestSellerProduct(req, res) {
+    const getBsl = await BestSeller.find({}).populate("productID")
+    res.status(200).json(getBsl)
+}
+
+// Get all trending products
+async function GetTrendingProduct(req, res) {
+    const getTrending = await Trending.find({}).populate("productID")
+    res.status(200).json(getTrending)
+}
+
+/*=====================API POST=====================*/
+
+// Create new product by admin
+async function CreateProduct(req, res) {
+    const { Name, Price, Descriptions, Image, category, size, color} = req.body
+
+    // Check product already or not
+    const checkProduct = await products.findOne({Name})
+
+    if (checkProduct){
+        return res.status(403).json({error: {message: 'The product had already in the system!!'}})   
+    }
+
+    // Create product
+    const newProduct = new products({ Name, Price, Descriptions, Image, category})
+    newProduct.save()
+
+    // Create prduct detail
+    const pID = newProduct._id.toString()
+    const detailProduct = new detail({pID, size, color})
+    detailProduct.save()
+  
+    res.status(200).json("Created!!")
+}
+
+// Create best seller product by admin
+async function AddBestSellerProduct(req, res) {
+    products.findById(req.params.id, async function(err, product){
+        if (err) res.status(403).json({error: {message: "Erorrr!!"}})
+        const productID = product._id.toString()
+        const bsl = new BestSeller({productID})
+        // Check product already or not
+        const checkProduct = await BestSeller.findOne({productID})
+        if (checkProduct == null){
+            bsl.save()
+            res.status(200).json("Added Best Seller Product Successfully")
+        }else{
+            res.status(403).json("Product added")
+        }
+    })
+}
+
+// Create trending product by admin
+async function AddTrendingProduct(req, res) {
+    products.findById(req.params.id, async function(err, product){
+        if (err) res.status(403).json({error: {message: "Erorrr!!"}})
+        const productID = product._id.toString()
+        const trending = new Trending({productID})
+
+        // Check product already or not
+        const checkProduct = await Trending.findOne({productID})
+        if (checkProduct == null){
+            trending.save()
+            res.status(200).json("Added Trending Product Successfully")
+        }else{
+            res.status(403).json("Product added")
+        }
+    })
+}
+
+/*=====================API DELETE=====================*/
+
+// Delete product by admin
+function DeleteProduct(req, res) {
+    products.findOneAndRemove({Name: req.body.Name}, function(err, product){
+        if (err) res.status(403).json({error: {message: "The product is not already!!"}})
+        detail.findOneAndRemove({pID: product._id.toString()}, err => {
+            if (err) res.status(402).json({error: {message: "The product is not already!!"}})
+        })
+        res.status(200).json("Deleted!!")
+    })
+}
+
+// Delete best seller product by admin
+async function DeleteBestSellerProduct(req, res) {
+    BestSeller.findOneAndRemove({_id: req.params.id}, function(err, bsl){
+        if (err) return res.status(403).json({error: {message: "Erorr!"}})
+
+        if (bsl == null){
+            return res.status(403).json("Product is not already!!")
+        }
+        res.status(200).json("deleted!!")
+    })
+}
+
+// Delete trending product by admin
+async function DeleteTrendingProduct(req, res) {
+    Trending.findOneAndRemove({_id: req.params.id}, function(err, trending){
+        if (err) return res.status(403).json({error: {message: "Erorr!"}})
+
+        if (trending == null){
+            return res.status(403).json("Product is not already!!")
+        }
+        res.status(200).json("deleted!!")
+    })
+}
+
+/*=====================API PUT=====================*/
+
+// Update product by admin
+async function UpdateProduct(req, res) {
+    products.findById(req.params.id, async function(err, product){
+        if (err) res.status(403).json({error: {message: "Erorrr!!"}})
+        // Update product
+        product.Name = req.body.Name
+        product.Price = req.body.Price
+        product.Descriptions = req.body.Descriptions
+        product.Image = req.body.Image
+        product.category = req.body.category
+
+        //Check the properties of product had already or not
+        const checkProduct = await products.findOne(
+            {
+                Name: req.body.Name,
+            })
+        if (checkProduct) res.status(401).json({error: {message: "The properties of product had already!!" }})
+        product.save()
+
+        // Update detail product
+        detail.findOne({pID: req.params.id}, function(err, details){
+            if (err) res.status(403).json({error: {message: "Erorrr!!"}})
+            details.size = req.body.size
+            details.color = req.body.color
+            details.save() 
+        })
+        res.status(200).json("Updated!!")
+    })
+}
+
+
 module.exports = {
     Search,
     DetailProcduct,
-    getAllProduct
+    getAllProduct,
+    CreateProduct,
+    DeleteProduct,
+    UpdateProduct,
+    AddBestSellerProduct,
+    GetBestSellerProduct,
+    AddTrendingProduct,
+    DeleteBestSellerProduct,
+    GetTrendingProduct,
+    DeleteTrendingProduct
 }

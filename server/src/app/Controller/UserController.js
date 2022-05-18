@@ -6,6 +6,12 @@ const jwt = require('jsonwebtoken')
 
 const { JWT_SECRET } = require('../../config/index')
 
+
+/*
+*  ==============================API SIGN IN AND SIGN UP==============================
+*/ 
+
+// Create TOKEN when sign in into the system
 function encodedToken(userID){
     return jwt.sign({
         iss: 'Le Quang Tuan',
@@ -15,36 +21,7 @@ function encodedToken(userID){
     },  JWT_SECRET)
 }
 
-const index = async (req, res, next) => {
-    const users = await User.find({})
-
-    return res.status(200).json({users})
-}
-
-async function newUser (req, res, next){
-    const newUser = new User(req.value.body)
-
-    await newUser.save()
-
-    return res.status(201).json({user: newUser})
-}
-
-const getUser = async (req, res, next) => {
-    const { userID } = req.value.params
-
-    const user = await User.findOne(
-        {_id: userID},
-        {
-            Firstname: 1,
-            Lastname: 1, 
-            Address: 1,
-            Phone: 1,
-            roles: 1
-        })
-
-    return res.status(200).json({user})
-}
-
+// API SIGN UP
 async function SignUp (req, res, next){
     const {Firstname, Lastname, Address, Phone, roles, email, password} = req.body
 
@@ -104,6 +81,7 @@ async function SignUp (req, res, next){
     return res.status(201).json('Successfully!!')
 }
 
+// API SIGN IN WITH LOCAL ACCOUNT
 async function SignIn (req, res, next){
     //Assign token
     const token = await encodedToken(req.user._id)
@@ -111,17 +89,14 @@ async function SignIn (req, res, next){
 
     const user = await User.findOne(
         {email: req.body.email},
-        {Firstname: 1, Lastname: 1, roles: 1}
+        {Firstname: 1, Lastname: 1, Address: 1, Phone: 1, roles: 1, email: 1}
     ).populate('roles')
     //return res.status(200).json({success: true})
     return res.send({user, token});
-    next()
 }
 
-async function Secret (req, res, next){
-    return res.status(200).json({resources: true})
-}
 
+// API SIGN IN WITH GOOGE ACCOUNT
 async function AuthGoogle (req, res, next){
     //Assign token
     const token = await encodedToken(req.user._id)
@@ -129,12 +104,15 @@ async function AuthGoogle (req, res, next){
     return res.status(200).json({success: true})
 }
 
+// API SIGN IN WITH FACEBOOK ACCOUNT
 async function AuthFacebook (req, res, next){
     // //Assign token
     const token = await encodedToken(req.user._id)
     res.setHeader('Authorization', token)
     return res.status(200).json({success: true})
 }
+
+/*==============================API PERSON==============================*/
 
 async function updateUser (req, res, next){
     // number of fields
@@ -148,13 +126,9 @@ async function updateUser (req, res, next){
 }
 
 module.exports = {
-    index, 
-    newUser,
-    getUser,
     updateUser,
     SignUp,
     SignIn,
-    Secret,
     AuthGoogle,
     AuthFacebook
 }
