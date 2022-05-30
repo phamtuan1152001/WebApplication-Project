@@ -42,6 +42,7 @@ function Products() {
           {/* <ProductSelection /> */}
           <div className="col">
             <button
+              style={{ width: "200px" }}
               className="btn btn-outline-secondary"
               onClick={() => setFilter(data)}
             >
@@ -50,6 +51,7 @@ function Products() {
           </div>
           <div className="col">
             <button
+              style={{ width: "200px" }}
               className="btn btn-outline-secondary"
               onClick={() => filterProducts("men's clothing")}
             >
@@ -58,6 +60,7 @@ function Products() {
           </div>
           <div className="col">
             <button
+              style={{ width: "200px" }}
               className="btn btn-outline-secondary"
               onClick={() => filterProducts("women's clothing")}
             >
@@ -66,6 +69,7 @@ function Products() {
           </div>
           <div className="col">
             <button
+              style={{ width: "200px" }}
               className="btn btn-outline-secondary"
               onClick={() => filterProducts("jewelery")}
             >
@@ -74,6 +78,7 @@ function Products() {
           </div>
           <div className="col">
             <button
+              style={{ width: "200px" }}
               className="btn btn-outline-secondary"
               onClick={() => filterProducts("electronics")}
             >
