@@ -17,7 +17,8 @@ const register = (
     email,
     password,
     confirmPassword,
-  });
+  })
+    .then(response => console.log(response))
 };
 const login = (email, password) => {
   return axios

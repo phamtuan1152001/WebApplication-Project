@@ -14,7 +14,7 @@ function SubcribeForm() {
     <>
       {submit && alert("Subcribe Successfully!")}
       <form onSubmit={handleSubcribe}>
-        <fieldset className="form-group">
+        <fieldset className="form-group d-flex flex-row justify-content-around align-items-center">
           <label>
             <input
               className="form-control"

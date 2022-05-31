@@ -2,65 +2,49 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import "./Login.css";
 import AuthService from "../../../services/auth.service";
-
-// var url = "http://localhost:5000/user/signin";
-
-// const required = (value) => {
-//   if (!value) {
-//     return (
-//       <div className="alert alert-danger" role="alert">
-//         This field is required!
-//       </div>
-//     );
-//   }
-// };
+import "./Login.css";
+import Swal from 'sweetalert2'
 
 function Login() {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  // const [loading, setLoading] = useState(false);
-  // const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("");
 
   let navigate = useNavigate();
 
+  const HandleValidate = () => {
+    return (
+      <>
+        <p className="alert alert-warning"><strong>{message}!</strong></p>
+      </>
+    )
+  }
+
   const handleLogin = async (e) => {
-    // e.preventDefault();
-    // try {
-    //   let res = await fetch(url, {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //       email: username,
-    //       password: password,
-    //     }),
-    //   });
-    //   let resJson = await res.json();
-    //   if (res.status === 200) {
-    //     // console.log("login thanh cong");
-    //     // console.log(resJson);
-    //     window.sessionStorage.setItem("token", JSON.stringify(resJson));
-    //     alert("Login thanh cong!");
-    //     navigate("/");
-    //     window.location.reload(false);
-    //   } else {
-    //     console.log("login that bai");
-    //   }
-    // } catch (error) {
-    //   console.log(error);
-    // }
     e.preventDefault();
     AuthService.login(username, password).then(
       () => {
-        alert("Login thanh cong!");
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: "Login Succesfully!",
+          showConfirmButton: false,
+          timer: 2000
+        })
         navigate("/");
         window.location.reload();
       },
       (error) => {
-        console.log("Login that bai!");
+        // console.log(error);
+        setMessage(error.response.data.details[0].message);
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: "Login Unsuccesfully!",
+          showConfirmButton: false,
+          timer: 2000
+        })
       }
     );
   };
@@ -78,6 +62,7 @@ function Login() {
                   id="name"
                   onChange={(e) => setUserName(e.target.value)}
                 />
+                {message ? <HandleValidate /> : null}
                 <label htmlFor="name" className="form-label">
                   Username
                 </label>
@@ -89,6 +74,7 @@ function Login() {
                   id="pass"
                   onChange={(e) => setPassword(e.target.value)}
                 />
+                {message ? <HandleValidate /> : null}
                 <label htmlFor="pass" className="form-label">
                   Password
                 </label>
@@ -98,7 +84,6 @@ function Login() {
                 id="login"
                 name="Login"
                 value="Login"
-                /* onClick={handleSubmit} */
               />
               <div className="register-form">
                 <p> Haven't got an account?</p>{" "}

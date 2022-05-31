@@ -9,12 +9,12 @@ function Subcribe() {
         <div className="container">
           <div className="subcribe-form-item">
             <h2>Subcribe To Our Newsletter</h2>
-            <p className="instrusction">
+            <p className="instrusction text-center">
               Sign up for the weekly newsletter and build better ecommerce
               stores.
             </p>
             <SubcribeForm />
-            <p>We respect your privacy, so we never share your info</p>
+            <p className='text-center'>We respect your privacy, so we never share your info</p>
           </div>
         </div>
       </div>

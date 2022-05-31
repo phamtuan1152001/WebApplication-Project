@@ -21,7 +21,7 @@ function BestSeller() {
       };
     };
     getProducts();
-  },[]);
+  }, []);
 
   // console.log(item);
   return (
@@ -29,7 +29,7 @@ function BestSeller() {
       <h1 className="best-seller-title">Best Seller Products</h1>
       <div className="container row">
         {item.map((item) => (
-          <div key={item.productID._id} className="col-md-3">
+          <div key={item.productID._id} className="col-md-3 d-flex flex-column justify-content-center align-items-center">
             <Link to="/products">
               <img
                 className="img-best-seller"
@@ -37,8 +37,8 @@ function BestSeller() {
                 alt={item.productID.Name}
               />
             </Link>
-            <h3>{item.productID.Name}</h3>
-            <p>{item.productID.Price}</p>
+            <h3>{item.productID.Name.substring(0, 12)}</h3>
+            <p className='text-center'>{item.productID.Price}</p>
           </div>
         ))}
       </div>

@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../../../services/auth.service";
 import "./Register.css";
-
-// var url = "http://localhost:5000/user/signup";
+import Swal from 'sweetalert2'
 
 function Register() {
   const [firstname, setFirstName] = useState("");
@@ -13,38 +12,20 @@ function Register() {
   const [password, setPassword] = useState("");
   const [passconfirm, setPassConfirm] = useState("");
   const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
 
   const navigate = useNavigate();
+  // console.log(message);
+
+  const HandleValidate = () => {
+    return (
+      <>
+        <p className="alert alert-warning"><strong>{message}!</strong></p>
+      </>
+    )
+  }
 
   const handleRegister = async (e) => {
-    // e.preventDefault();
-    // try {
-    //   let res = await fetch(url, {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //       Firstname: firstname,
-    //       Lastname: lastname,
-    //       Address: address,
-    //       Phone: phone,
-    //       email: email,
-    //       password: password,
-    //       confirmPassword: passconfirm,
-    //     }),
-    //   });
-    //   let resJson = await res.json();
-    //   if (res.status === 200 || res.status === 201) {
-    //     console.log("register thanh cong  ");
-    //     navigate("/login");
-    //   } else {
-    //     console.log("register that bai");
-    //     console.log(resJson.details[0].message);
-    //   }
-    // } catch (error) {
-    //   console.log(error);
-    // }
     e.preventDefault();
     AuthService.register(
       firstname,
@@ -56,12 +37,27 @@ function Register() {
       passconfirm
     ).then(
       () => {
-        alert("Register thanh cong!");
+        // alert("Register thanh cong!");
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: "Register Succesfully!",
+          showConfirmButton: false,
+          timer: 2000
+        })
         navigate("/login");
         // window.location.reload();
       },
       (error) => {
-        console.log("Register that bai!");
+        // console.log(error);
+        setMessage(error.response.data.details[0].message);
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: "Register Unsuccesfully!",
+          showConfirmButton: false,
+          timer: 2000
+        })
       }
     );
   };
@@ -81,6 +77,7 @@ function Register() {
                   setFirstName(e.target.value);
                 }}
               />
+              {message ? <HandleValidate /> : null}
               <label htmlFor="fullname" className="form-label">
                 First name
               </label>
@@ -94,6 +91,7 @@ function Register() {
                   setLastName(e.target.value);
                 }}
               />
+              {message ? <HandleValidate /> : null}
               <label htmlFor="lastname" className="form-label">
                 Last name
               </label>
@@ -107,6 +105,7 @@ function Register() {
                   setAddress(e.target.value);
                 }}
               />
+              {message ? <HandleValidate /> : null}
               <label htmlFor="address" className="form-label">
                 Address
               </label>
@@ -120,6 +119,7 @@ function Register() {
                   setEmail(e.target.value);
                 }}
               />
+              {message ? <HandleValidate /> : null}
               <label htmlFor="email" className="form-label">
                 Email
               </label>
@@ -134,6 +134,7 @@ function Register() {
                     setPassword(e.target.value);
                   }}
                 />
+                {message ? <HandleValidate /> : null}
                 <label htmlFor="pass" className="form-label">
                   Password
                 </label>
@@ -149,6 +150,7 @@ function Register() {
                     setPassConfirm(e.target.value);
                   }}
                 />
+                {message ? <HandleValidate /> : null}
                 <label htmlFor="pass-conf" className="form-label">
                   Password Confirm
                 </label>
@@ -163,6 +165,7 @@ function Register() {
                   setPhone(e.target.value);
                 }}
               />
+              {message ? <HandleValidate /> : null}
               <label htmlFor="phone-num" className="form-label">
                 Phone Number
               </label>

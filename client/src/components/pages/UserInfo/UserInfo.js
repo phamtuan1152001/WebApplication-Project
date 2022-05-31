@@ -49,8 +49,8 @@ function UserInfo() {
             </tr>
           </tbody>
         </table>
-        <button className="btn btn-outline-dark mt-3 mb-3">
-          <Link to="/updateuserinfor">Update User Information</Link>
+        <button style={{ width: "500px" }} className="btn btn-outline-dark mt-3 mb-3">
+          <Link style={{ color: "black" }} to="/updateuserinfor">Update User Information</Link>
         </button>
       </div>
     );
