@@ -17,6 +17,9 @@ const product = new Schema({
     category: {
         type: String
     },
+    amount: {
+        type: Number
+    },
     rating: {
         type: Object
     }

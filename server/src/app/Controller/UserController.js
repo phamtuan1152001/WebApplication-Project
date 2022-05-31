@@ -43,41 +43,33 @@ async function SignUp (req, res, next){
     //Create new user.
     const newUser = new User({Firstname, Lastname, Address, Phone, roles, email, password})
 
-    newUser.save((err, user) => {
-        if (err) {
-            res.status(500).json({
-                message: err
-            })
-            return
-        }
-        // Create admin account
-        if (req.body.roles) {
-            Role.find({
-                name: req.body.roles
-            },(err, role) => {
-                if (err) {
-                    res.status(500).json({
-                        message: err
-                    })
-                    return
-                }
-                user.roles = role[0]._id
-                user.save()
-            })
-        }else {
-            // Create user account
-            Role.findOne({name: 'user'}, (err, role) => {
-                if (err) {
-                    res.status(500).json({
-                        message: err 
-                    });
-                    return;
-                  }
-                  user.roles = [role._id]
-                  user.save()
-            })
-        }
-    })
+    // Create admin account
+    if (req.body.roles) {
+        Role.find({
+            name: req.body.roles
+        },(err, role) => {
+            if (err) {
+                res.status(500).json({
+                    message: err
+                })
+                return
+            }
+            newUser.roles = role[0]._id
+            newUser.save()
+        })
+    }else {
+        // Create user account
+        Role.findOne({name: 'user'}, (err, role) => {
+            if (err) {
+                res.status(500).json({
+                    message: err 
+                });
+                return;
+              }
+              newUser.roles = [role._id]
+              newUser.save()
+        })
+    }
     return res.status(201).json('Successfully!!')
 }
 

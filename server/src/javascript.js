@@ -8,7 +8,7 @@ const cors = require("cors")
 require('./config/db/connect').mongoURI;
 const index = require('./route/index')
 const product = require('./route/product')
-const payment = require('./route/payment')
+const order = require('./route/order')
 
 app.use(cors())
 
@@ -35,7 +35,7 @@ app.get('/', (req, res, next) => {
 
 app.use("/user", index);
 app.use("/", product);
-app.use("/v1/api", payment);
+app.use("/v1/api", order);
 
 
 // Catch 404 Errors and forward them to error handler
