@@ -7,6 +7,8 @@ require('../config/db/passport')
 
 router.route('/order').post(passport.authenticate('jwt', {session: false}), orderController.order)
 
-router.route('/bill').get(orderController.checkout)
+router.route('/checkout').get(passport.authenticate('jwt', {session: false}), orderController.checkout)
+
+router.route('/history/bill').get(orderController.bill)
 
 module.exports = router

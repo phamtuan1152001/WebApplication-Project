@@ -10,7 +10,10 @@ const index = require('./route/index')
 const product = require('./route/product')
 const order = require('./route/order')
 
-app.use(cors())
+app.use(cors({
+  origin: '*',
+  methods: ['POST', 'GET', 'PUT', 'DELETE']
+}))
 
 // Middlewares
 app.use(morgan('dev'))
