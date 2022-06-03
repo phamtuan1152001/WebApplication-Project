@@ -9,6 +9,6 @@ router.route('/order').post(passport.authenticate('jwt', {session: false}), orde
 
 router.route('/checkout').get(passport.authenticate('jwt', {session: false}), orderController.checkout)
 
-router.route('/history/bill').get(orderController.bill)
+router.route('/history/bill').get(passport.authenticate('jwt', {session: false}), orderController.bill)
 
 module.exports = router

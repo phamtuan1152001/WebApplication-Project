@@ -1,10 +1,6 @@
-const products = require('../Models/ProductModel');
 const detail = require('../Models/Detail');
 const user = require('../Models/LoginModel');
 const Bill = require('../Models/OrderModel')
-
-const redis = require('redis')
-const { get, set, incrby, decrby, exists, setnx} = require('../../model.redis/redis')
 
 const jwt = require('jsonwebtoken')
 
@@ -17,14 +13,24 @@ async function order(req, res) {
 
     // The information of products
     var TotalPrice = 0
-    const DetailID = req.body.map(element => {
+    const DETAIL = req.body.map(element => {
         return element.pID
     })
 
     // Calculate Total Price
-    for (var i = 0; i < DetailID.length; i++){
-        const product = await detail.findOne({pID: DetailID[i]}).populate('pID')
+    var DetailID = [DETAIL.length]
+    for (var i = 0; i < DETAIL.length; i++){
+        const amountOfProduct = req.body[i].amount
+        const colorOfProduct = req.body[i].color
+        const sizeOfProduct = req.body[i].Size
+        const product = await detail.findOne({pID: DETAIL[i]}).populate('pID')
+        
         TotalPrice += product.pID.Price
+        DetailID[i] = product
+        product.amount = amountOfProduct
+        product.color = colorOfProduct
+        product.size = sizeOfProduct
+        console.log(product)
     }
     
     // Save bill in database
@@ -33,18 +39,15 @@ async function order(req, res) {
     const bill = new Bill({UserID, DetailID, TotalPrice, DatePrint})
 
     bill.save()
+    console.log(bill)
     
     // Update the amount of products after selling for user. 
     for (var i = 0; i < DetailID.length; i++){
         const amountOfProduct = req.body[i].amount
-        const DetailProduct = await detail.findOne({pID: DetailID[i]}).populate('pID')
+        const DetailProduct = await detail.findOne({pID: DETAIL[i]}).populate('pID')
 
         DetailProduct.amount = DetailProduct.amount - amountOfProduct  
-        if (DetailProduct.amount < 0){
-           return res.status(401).json("Not enough quantity for product " + DetailProduct.pID.Name)
-        }else {
-            DetailProduct.save() 
-        }    
+        DetailProduct.save()   
     }
     res.status(200).json("Saved")
 }
@@ -60,20 +63,33 @@ async function checkout(req, res) {
 
     // The information of products
     var TotalPrice = 0
-    var product = req.body
     const DetailID = req.body.map(element => {
         return element.pID
     })
 
-    // Calculate Total Price
+    // Calculate Total Price And Check The Quantity Of Products
+    var pID = [DetailID.length]
     for (var i = 0; i < DetailID.length; i++){
+        const amountOfProduct = req.body[i].amount
+        const colorOfProduct = req.body[i].color
+        const sizeOfProduct = req.body[i].Size
+
         const product = await detail.findOne({pID: DetailID[i]}).populate('pID')
-        TotalPrice += product.pID.Price
+        const newAmount = product.amount - amountOfProduct  
+        if (newAmount < 0){
+            return res.status(401).json("Not enough quantity for product " + product.pID.Name)
+        }else {
+            TotalPrice += product.pID.Price
+            pID[i] = product
+            product.amount = amountOfProduct
+            product.color = colorOfProduct
+            product.size = sizeOfProduct
+        } 
     }
     
     // Show bill 
     const DatePrint = new Date().getTime();
-    const bill = ({User, product, TotalPrice, DatePrint})
+    const bill = ({User, pID, TotalPrice, DatePrint})
 
     res.status(200).json(bill)
 }
@@ -86,7 +102,7 @@ async function bill (req, res){
         {_id: verifytoken.sub}, 
     )
 
-    const bill = await Bill.find({UserID: User._id})
+    const bill = await Bill.find({UserID: User._id}).populate('DetailID')
     res.status(200).json(bill)
 }
 
