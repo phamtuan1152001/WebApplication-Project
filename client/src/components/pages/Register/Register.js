@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../../../services/auth.service";
 import "./Register.css";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 function Register() {
   const [firstname, setFirstName] = useState("");
@@ -20,10 +20,12 @@ function Register() {
   const HandleValidate = () => {
     return (
       <>
-        <p className="alert alert-warning"><strong>{message}!</strong></p>
+        <p className="alert alert-warning">
+          <strong>{message}!</strong>
+        </p>
       </>
-    )
-  }
+    );
+  };
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -39,12 +41,12 @@ function Register() {
       () => {
         // alert("Register thanh cong!");
         Swal.fire({
-          position: 'center',
-          icon: 'success',
+          position: "center",
+          icon: "success",
           title: "Register Succesfully!",
           showConfirmButton: false,
-          timer: 2000
-        })
+          timer: 2000,
+        });
         navigate("/login");
         // window.location.reload();
       },
@@ -52,12 +54,12 @@ function Register() {
         // console.log(error);
         setMessage(error.response.data.details[0].message);
         Swal.fire({
-          position: 'center',
-          icon: 'error',
+          position: "center",
+          icon: "error",
           title: "Register Unsuccesfully!",
           showConfirmButton: false,
-          timer: 2000
-        })
+          timer: 2000,
+        });
       }
     );
   };

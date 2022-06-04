@@ -1,3 +1,4 @@
+
 body{
   font-family: 'Courier New', Courier, monospace;
   font-size: 18px;
@@ -92,7 +93,7 @@ input:focus + .form-label{
 top: 0;
 padding: 0;
 display: inline-block;
-background-color: white;
+background-color: white ;
 color: #20dbc2;
 border-color: #00bfa6;
 font: bold;

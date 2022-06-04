@@ -10,9 +10,11 @@ export const GlobalStyles = createGlobalStyle`
 export const lightTheme = {
   body: "#ffff",
   text: "#121212",
+  backgroundcolor: "#ffff",
 };
 
 export const darkTheme = {
   body: "#121212",
   text: "#ffff",
+  backgroundcolor: "#121212",
 };
