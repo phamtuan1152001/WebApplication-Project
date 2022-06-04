@@ -16,10 +16,10 @@ const details = new Schema({
         type: Number
     },
     size: {
-        type: Schema.Types.Object, 
+        type: Schema.Types.Array, 
     },
     color: {
-        type: Schema.Types.Object,
+        type: Schema.Types.Array,
     }
 })
 

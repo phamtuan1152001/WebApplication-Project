@@ -10,19 +10,9 @@ const index = require('./route/index')
 const product = require('./route/product')
 const order = require('./route/order')
 
-// app.use(cors({
-//   origin: '*',
-//   methods: ['POST', 'GET', 'PUT', 'DELETE']
-// }))
-
-app.use(function(req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', process.env.REACT_URL)
-  res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, PATCH, OPTIONS, DELETE')
-  res.setHeader('Access-Control-Allow-Methods', 'X-Requested-With,content-type')
-  res.setHeader('Access-Control-Allow-Credentials', true)
-
-  next()
-})
+app.use(cors({
+  origin: '*'
+}))
 
 // Middlewares
 app.use(morgan('dev'))
@@ -73,6 +63,14 @@ app.use((err, req, res, next) => {
 
 
 const port = process.env.PORT;
+// app.use(function(req, res, next) {
+//   res.setHeader('Access-Control-Allow-Origin', process.env.REACT_URL)
+//   res.setHeader('Access-Control-Allow-Methods', 'GET')
+//   res.setHeader('Access-Control-Allow-Headers', 'application/json')
+//   res.setHeader('Access-Control-Allow-Credentials', true)
+
+//   next()
+// })
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
