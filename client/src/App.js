@@ -14,7 +14,7 @@ import CheckoutPage from "./components/pages/Checkout/Checkout";
 import "./App.css";
 import UserInfoPage from "./components/pages/UserInfo/UserInfo";
 import UpdateUserPage from "./components/pages/UserInfo/UpdateUser";
-import AdminPage from "./components/pages/Admin/AdminPage"
+import AdminPage from "./components/pages/Admin/AdminPage";
 import AddBestSellersPage from "./components/pages/Admin/ComponentAdmin/AddBestSellers";
 import AddTrendProductsPage from "./components/pages/Admin/ComponentAdmin/AddTrendProducts.";
 import DisplayBestSellerPage from "./components/pages/Admin/ComponentAdmin/DisplayBestSeller";
@@ -59,8 +59,12 @@ function App() {
         <Route path="/addBestSeller" element={<AddBestSellersPage />} />
         <Route path="/addTrendProduct" element={<AddTrendProductsPage />} />
         <Route path="/displayBestSeller" element={<DisplayBestSellerPage />} />
-        <Route path="/displayTrendProduct" element={<DisplayTrendProductPage />} />
+        <Route
+          path="/displayTrendProduct"
+          element={<DisplayTrendProductPage />}
+        />
       </Routes>
+
       <Footer />
     </>
   );

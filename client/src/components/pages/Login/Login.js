@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../../../services/auth.service";
 import "./Login.css";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 function Login() {
   const [username, setUserName] = useState("");
@@ -16,22 +16,24 @@ function Login() {
   const HandleValidate = () => {
     return (
       <>
-        <p className="alert alert-warning"><strong>{message}!</strong></p>
+        <p className="alert alert-warning">
+          <strong>{message}!</strong>
+        </p>
       </>
-    )
-  }
+    );
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
     AuthService.login(username, password).then(
       () => {
         Swal.fire({
-          position: 'center',
-          icon: 'success',
+          position: "center",
+          icon: "success",
           title: "Login Succesfully!",
           showConfirmButton: false,
-          timer: 2000
-        })
+          timer: 2000,
+        });
         navigate("/");
         window.location.reload();
       },
@@ -39,12 +41,12 @@ function Login() {
         // console.log(error);
         setMessage(error.response.data.details[0].message);
         Swal.fire({
-          position: 'center',
-          icon: 'error',
+          position: "center",
+          icon: "error",
           title: "Login Unsuccesfully!",
           showConfirmButton: false,
-          timer: 2000
-        })
+          timer: 2000,
+        });
       }
     );
   };
@@ -79,12 +81,7 @@ function Login() {
                   Password
                 </label>
               </div>
-              <input
-                type="submit"
-                id="login"
-                name="Login"
-                value="Login"
-              />
+              <input type="submit" id="login" name="Login" value="Login" />
               <div className="register-form">
                 <p> Haven't got an account?</p>{" "}
                 <Link to="/register" className="go-to-register">
