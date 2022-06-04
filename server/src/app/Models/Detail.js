@@ -12,6 +12,9 @@ const details = new Schema({
         type: Schema.Types.String,
         ref: 'product' 
     },
+    amount: {
+        type: Number
+    },
     size: {
         type: Schema.Types.Object, 
     },

@@ -10,7 +10,19 @@ const index = require('./route/index')
 const product = require('./route/product')
 const order = require('./route/order')
 
-app.use(cors())
+// app.use(cors({
+//   origin: '*',
+//   methods: ['POST', 'GET', 'PUT', 'DELETE']
+// }))
+
+app.use(function(req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', process.env.REACT_URL)
+  res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, PATCH, OPTIONS, DELETE')
+  res.setHeader('Access-Control-Allow-Methods', 'X-Requested-With,content-type')
+  res.setHeader('Access-Control-Allow-Credentials', true)
+
+  next()
+})
 
 // Middlewares
 app.use(morgan('dev'))
