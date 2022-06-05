@@ -6,7 +6,7 @@ function FooterContact() {
       <div className="footer-contact-container">
         <div className="footer-contact-item">
           <h3>Let's talk</h3>
-          <p>
+          <p className="contact-item">
             <span>
               <i className="fa-solid fa-headphones-simple"></i>
             </span>
@@ -15,7 +15,7 @@ function FooterContact() {
         </div>
         <div className="footer-contact-item">
           <h3>Find Us</h3>
-          <p>
+          <p className="contact-item">
             <span>
               <i className="fa-solid fa-location-dot"></i>
             </span>

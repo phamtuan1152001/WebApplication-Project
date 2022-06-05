@@ -7,11 +7,15 @@
     margin-left: auto;
     margin-right: auto;
     width: 100%;
+    height: 100%;
     text-align: center;
 }
 .footer-contact-item h3 {
     color: #fff;
     margin-bottom: 20px;
+}
+.contact-item {
+    width: 100%;
 }
 .footer-contact-item p {
     color: #999999;
