@@ -1,3 +1,6 @@
+.adminPage-wrapper {
+    height: 35vh;
+}
 .container_link {
     display: flex;
     flex-direction: row;

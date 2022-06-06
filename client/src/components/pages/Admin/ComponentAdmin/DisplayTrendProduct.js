@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import AuthService from '../../../../services/auth.service';
-
+import Swal from "sweetalert2";
 function DisplayTrendProduct() {
-  const [item, setItem] = useState([])
+  const [item, setItem] = useState([]);
   const [loading, setLoading] = useState(false);
   const [idDel, setIdAdd] = useState();
   const user = AuthService.getCurrentUser();
@@ -22,87 +22,108 @@ function DisplayTrendProduct() {
       };
     };
     getProducts();
-  },[]);
+  }, []);
 
-   console.log(item);
+  console.log(item);
 
-const handleAdd = async (e) => {
+  const handleAdd = async (e) => {
     e.preventDefault();
     try {
-        let res = await fetch(`http://localhost:5000/admin/delete-trending/${idDel}`, {
+      let res = await fetch(
+        `http://localhost:5000/admin/delete-trending/${idDel}`,
+        {
           method: "DELETE",
           headers: {
-            "Authorization": `${user.token}`
-          }
-        })
-        if (res.status === 200) {
-          console.log("Deleting sucessful!");
-        } else {
-          console.log("Fail Deleting item!");
+            Authorization: `${user.token}`,
+          },
         }
+      );
+      if (res.status === 200) {
+        // console.log("Deleting sucessful!");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Delete Succesfully!",
+          showConfirmButton: false,
+          timer: 3000,
+        });
+      } else {
+        // console.log("Fail Deleting item!");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Delete Unsuccesfully!",
+          showConfirmButton: false,
+          timer: 3000,
+        });
+      }
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
-}
+  };
 
-const Loading = () => {
-    return(
-        <>
-            <div>Loading</div>
-        </>
-    )
-}
+  const Loading = () => {
+    return (
+      <>
+        <div>Loading</div>
+      </>
+    );
+  };
 
   const GetAllProducts = () => {
     return (
       <>
         <div className="row">
-            {item.map((item) => (
-              <div className="card col-3" key={item.productID._id}>
-                <div className="card-body">
+          {item.map((item) => (
+            <div className="card col-3" key={item.productID._id}>
+              <div className="card-body">
                 <img
-                  style={{width: "200px", height: "200px"}}
+                  style={{ width: "200px", height: "200px" }}
                   className="card-img-top"
                   src={item.productID.Image}
                   alt={item.productID.Name}
                 />
-                  <h5 className="card-title">{item.productID.Name}</h5>
-                  <p className="card-text">
-                    Designs:{" "}
-                    {item.productID.Descriptions &&
-                      item.productID.Descriptions.Designs}
-                  </p>
-                  <p className="card-text">
+                <h5 className="card-title">
+                  {item.productID.Name.substring(0, 12)}
+                </h5>
+                <p className="card-text">
+                  Designs:{" "}
+                  {item.productID.Descriptions &&
+                    item.productID.Descriptions.Designs}
+                </p>
+                <p className="card-text">
                   Material:{" "}
-                    {item.productID.Descriptions &&
-                      item.productID.Descriptions.Material}
-                  </p>
-                  <p className="card-text">
+                  {item.productID.Descriptions &&
+                    item.productID.Descriptions.Material}
+                </p>
+                <p className="card-text">
                   Origin:{" "}
-                    {item.productID.Descriptions &&
-                      item.productID.Descriptions.Origin}
-                  </p>
-                    <input 
-                        type="radio" 
-                        onChange={() => setIdAdd(item._id)}
-                    />
-                </div>
+                  {item.productID.Descriptions &&
+                    item.productID.Descriptions.Origin}
+                </p>
+                <input type="radio" onChange={() => setIdAdd(item._id)} />
               </div>
-            ))}
-            <button className='btn btn-outline-dark mt-3 mb-3' onClick={handleAdd}>Delete Item</button>
+            </div>
+          ))}
+          <button
+            className="btn btn-outline-dark mt-3 mb-3"
+            onClick={handleAdd}
+          >
+            Delete Item
+          </button>
         </div>
       </>
     );
-}
+  };
   return (
     <>
-    <div className='container mt-3'>
-          <h1>Display Trend Product</h1>
-          <p>The list item below</p>
-          {loading ? <Loading/> : <GetAllProducts />}
+      <div className="container mt-3">
+        <h1>Display Trend Product</h1>
+        <p>The list item below</p>
+        {loading ? <Loading /> : <GetAllProducts />}
       </div>
-  </>
-  )
+    </>
+  );
 }
 
 export default DisplayTrendProduct
