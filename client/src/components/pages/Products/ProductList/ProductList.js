@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./ProductList.css";
 
 function ProductList({ products }) {
-  //console.log(products[0].pID);
+  // console.log(products[0].Name.substring(0, 12));
   return (
     <>
       {products.map((product, index) => (
@@ -14,7 +14,7 @@ function ProductList({ products }) {
             alt={product.Name}
           />
 
-          <h3>{product.Name.substring(0, 12)}</h3>
+          <h3>{product.Name}</h3>
           <p className="product-list-item__price">
             <span>$</span>
             {product.Price}
