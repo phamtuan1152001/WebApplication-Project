@@ -59,7 +59,9 @@ async function GetTrendingProduct(req, res) {
 
 // Create new product by admin
 async function CreateProduct(req, res) {
-    const { Name, Price, Descriptions, Image, category, size, color, amount} = req.body
+    //const { Name, Price, Descriptions, Image, category, size, color, amount} = req.body
+    const { Name, Price, Descriptions, Image, category} = req.body
+
 
     // Check product already or not
     const checkProduct = await products.findOne({Name})
@@ -73,9 +75,9 @@ async function CreateProduct(req, res) {
     newProduct.save()
 
     // Create prduct detail
-    const pID = newProduct._id.toString()
-    const detailProduct = new detail({pID, size, color, amount})
-    detailProduct.save()
+    // const pID = newProduct._id.toString()
+    // const detailProduct = new detail({pID, size, color, amount})
+    // detailProduct.save()
   
     res.status(200).json("Created!!")
 }
