@@ -1,5 +1,6 @@
 import axios from "axios";
 const API_URL = "http://localhost:5000/user/";
+const API_URL_CREATE_PRODUCT = "http://localhost:5000/";
 const register = (
   Firstname,
   Lastname,
@@ -20,6 +21,33 @@ const register = (
   })
     .then(response => console.log(response))
 };
+const createProduct = (
+  nameProduct,
+  priceProduct,
+  imgProduct,
+  descriptionProduct,
+  ratingProduct,
+  category,
+  tokenUser
+) => {
+  return axios.post(API_URL_CREATE_PRODUCT +
+    "admin/create-product",
+    {
+      Name: nameProduct,
+      Price: priceProduct,
+      Image: imgProduct,
+      Descriptions: descriptionProduct,
+      category: category,
+      rating: ratingProduct,
+    },
+    {
+      headers: {
+        Authorization: `${tokenUser}`,
+      }
+    }
+  )
+    .then(response => console.log(response))
+}
 const login = (email, password) => {
   return axios
     .post(API_URL + "signin", {
@@ -47,5 +75,6 @@ const AuthService = {
   login,
   logout,
   getCurrentUser,
+  createProduct
 };
 export default AuthService;

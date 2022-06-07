@@ -1,4 +1,6 @@
 import React from "react";
+import 'antd/dist/antd.css';
+import { Spin, Space } from 'antd';
 import { useState, useEffect } from "react";
 import ProductList from "./ProductList/ProductList";
 import "./Products.css";
@@ -27,7 +29,17 @@ function Products() {
   }, []);
 
   const Loading = () => {
-    return <>Loading....</>;
+    return (
+      <>
+        <div className="row d-flex justify-content-center">
+          <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <Space size="large" align="center">
+              <Spin size="large" />
+            </Space>
+          </div>
+        </div>
+      </>
+    )
   };
 
   const filterProducts = (cat) => {
