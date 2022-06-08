@@ -25,7 +25,7 @@ router.route('/admin/add-trending/:id').post(auth.verifyToken, auth.isAdmin, Pro
 
 
 // Route Delete Method
-router.route('/admin/delete-product').delete(auth.verifyToken, auth.isAdmin, ProductController.DeleteProduct)
+router.route('/admin/delete-product/:id').delete(auth.verifyToken, auth.isAdmin, ProductController.DeleteProduct)
 
 router.route('/admin/delete-bestseller/:id').delete(auth.verifyToken, auth.isAdmin, ProductController.DeleteBestSellerProduct)
 
