@@ -48,6 +48,7 @@ function DisplayProduct() {
                     showConfirmButton: false,
                     timer: 3000,
                 });
+                window.location.reload();
             } else {
                 // console.log("Fail Deleting item!");
                 Swal.fire({
