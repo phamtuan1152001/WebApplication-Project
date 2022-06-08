@@ -27,7 +27,6 @@ const Login = new Schema({
     },
     password: { 
         type: String, 
-        maxLength: 50,
     },
     roles: [
         {

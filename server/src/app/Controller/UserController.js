@@ -2,6 +2,7 @@ const User = require('../Models/LoginModel')
 const db = require('../Models')
 const ROLES = db.ROLES
 const Role = require('../Models/Role')
+const Bill = require('../Models/OrderModel')
 const jwt = require('jsonwebtoken')
 
 const { JWT_SECRET } = require('../../config/index')
@@ -108,16 +109,28 @@ async function AuthFacebook (req, res, next){
 
 async function updateUser (req, res, next){
     // number of fields
-    const { userID } = req.value.params
+    const userID = req.params.userID
 
-    const newUser = req.value.body
+    const newUser = req.body
     
     const result = await User.findByIdAndUpdate(userID, newUser)
+    //result.save()
+    console.log(result)
+
     
-    return res.status(200).json({success: true})
+    return res.status(200).json("updated!!")
+}
+
+async function getBill (req, res){
+    const user = await User.findOne({_id: req.params.userID})
+
+    const bill = await Bill.find({Email: user.email})
+
+    res.status(200).json(bill)
 }
 
 module.exports = {
+    getBill,
     updateUser,
     SignUp,
     SignIn,

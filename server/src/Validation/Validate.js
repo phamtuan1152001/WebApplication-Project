@@ -60,6 +60,14 @@ const Schemas = {
         email: Joi.string().email().required(),
         password: Joi.string().min(8).required()
     }),
+
+    userOptionalSchema: Joi.object().keys({
+        Firstname: Joi.string().min(2),
+        Lastname: Joi.string().min(2),
+        Address: Joi.string().min(2),
+        Phone: Joi.string().regex(/^\d{3}\d{3}\d{4}$/),
+        email: Joi.string().regex(/^[a-z][a-z0-9_\.]{5,32}@(gmail\.com)$/).email()
+    })
 }
 
 module.exports = {
