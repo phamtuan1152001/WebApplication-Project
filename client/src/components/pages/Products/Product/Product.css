@@ -43,12 +43,13 @@
 .product-info button {
     width: 150px;
     padding: 10px;
+    color: black;
     border: solid black 1px;
     cursor: pointer;
     border-radius: 5px;
     margin-right: 20px;
     transition: 0.5s;
-    font-size: 18px;
+    font-size: 15px;
     background-color: #fffffe;
 }
 .product-info button:hover {
