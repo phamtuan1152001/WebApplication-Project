@@ -119,10 +119,12 @@ async function bill (req, res){
     for (var i = 0; i < DETAIL.length; i++){
         const product = await detail.findOne({pID: DETAIL[i]}).populate('pID')
         
-        DetailID[i] = product
+        DetailID[i] = product._id.toString()
     }
     const bills = new Bill({Firstname, Lastname, Email, Address, Country, DetailID})
     bills.save()
+    res.status(200).json("Order Success!!")
+
 }
 
 module.exports = {
