@@ -14,7 +14,7 @@ function ProductList({ products }) {
             alt={product.Name}
           />
 
-          {/* <h3>{product.Name.substring(0, 12)}</h3> */}
+          <h3>{product.Name?.substring(0, 12)}</h3>
           <p className="product-list-item__price">
             <span>$</span>
             {product.Price}

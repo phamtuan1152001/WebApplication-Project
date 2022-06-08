@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import AuthService from "../../../services/auth.service";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+
 function Checkout() {
+  const user = AuthService.getCurrentUser();
+  const tokenUser = user.token;
+  const navigate = useNavigate();
   const state = useSelector((state) => state.handleCart);
-
+  console.log(state);
   var total = 0;
-
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [email, setEmail] = useState("")
+  const [address, setAddress] = useState("")
+  const [country, setCountry] = useState("")
+  const [itemCart, setItemCart] = useState(state)
+  console.log(itemCart);
   const itemList = (item) => {
-    //console.log(item);
+    // console.log(item);
     total = total + item.pID.Price;
     return (
       <li className="list-group-item d-flex justify-content-between lh-sm">
@@ -17,6 +30,43 @@ function Checkout() {
       </li>
     );
   };
+
+  const handleCheckout = async (e) => {
+    e.preventDefault();
+    AuthService.checkout(
+      firstName,
+      lastName,
+      email,
+      address,
+      country,
+      itemCart,
+      tokenUser
+    ).then(
+      () => {
+        // alert("Register thanh cong!");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Checkout Succesfully!",
+          showConfirmButton: false,
+          timer: 3000,
+        });
+        navigate("/products");
+        window.location.reload();
+      },
+      (error) => {
+        // console.log(error);
+        // setMessage(error.response.data.details[0].message);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Checkout Unsuccesfully!",
+          showConfirmButton: false,
+          timer: 3000,
+        });
+      }
+    );
+  }
   return (
     <>
       <div className="container my-5">
@@ -37,7 +87,7 @@ function Checkout() {
           </div>{" "}
           <div className="col-md-8 order-md-1">
             <h4 className="mb-3"> Billing address </h4>{" "}
-            <form className="needs-validation" /* novalidate="" */>
+            <form onSubmit={handleCheckout} className="needs-validation" /* novalidate="" */>
               <div className="row">
                 <div className="col-md-6 mb-3">
                   <label htmlFor="firstName"> First name </label>{" "}
@@ -49,6 +99,9 @@ function Checkout() {
                     required=""
                     style={{
                       width: "100%",
+                    }}
+                    onChange={(e) => {
+                      setFirstName(e.target.value);
                     }}
                   />{" "}
                   <div className="invalid-feedback">
@@ -66,6 +119,9 @@ function Checkout() {
                     style={{
                       width: "100%",
                     }}
+                    onChange={(e) => {
+                      setLastName(e.target.value);
+                    }}
                   />{" "}
                   <div className="invalid-feedback">
                     Valid last name is required.{" "}
@@ -81,6 +137,9 @@ function Checkout() {
                   className="form-control"
                   id="email"
                   placeholder="you@example.com"
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
                 />
                 <div className="invalid-feedback">
                   Please enter a valid email address for shipping updates.{" "}
@@ -94,6 +153,9 @@ function Checkout() {
                   id="address"
                   placeholder="1234 Main St"
                   required=""
+                  onChange={(e) => {
+                    setAddress(e.target.value);
+                  }}
                 />
                 <div className="invalid-feedback">
                   Please enter your shipping address.{" "}
@@ -108,6 +170,9 @@ function Checkout() {
                     id="contry"
                     placeholder="Ho Chi Minh city"
                     required=""
+                    onChange={(e) => {
+                      setCountry(e.target.value);
+                    }}
                   />
                   <div className="invalid-feedback">
                     Please select a valid country.{" "}

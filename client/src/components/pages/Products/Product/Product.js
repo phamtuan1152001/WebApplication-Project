@@ -66,7 +66,7 @@ function Product() {
                 <h2>{item.pID.category}</h2>
                 <h3>
                   <span>Rating: </span>
-                  {item.pID.rating && item.pID.rating.rate}
+                  {item.pID.rating}
                   <span>
                     <i className="fa-solid fa-star"></i>
                   </span>
@@ -75,7 +75,7 @@ function Product() {
                   <span>$</span>
                   {item.pID.Price}
                 </p>
-                <h4>{item.pID.Descriptions.Designs}</h4>
+                <h4>{item.pID.Descriptions}</h4>
                 <button onClick={() => addProduct(item)}>Add to Cart</button>
               </div>
             </div>
