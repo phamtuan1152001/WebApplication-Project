@@ -20,6 +20,7 @@ import AddTrendProductsPage from "./components/pages/Admin/ComponentAdmin/AddTre
 import DisplayBestSellerPage from "./components/pages/Admin/ComponentAdmin/DisplayBestSeller";
 import DisplayTrendProductPage from "./components/pages/Admin/ComponentAdmin/DisplayTrendProduct";
 import CreateProductPage from "./components/pages/Admin/ComponentAdmin/CreateProduct";
+import DisplayProductPage from "./components/pages/Admin/ComponentAdmin/DisplayProduct";
 import { Toggle } from "./components/Theme/Toggle";
 import { useDarkMode } from "./components/Theme/useDarkMode";
 import {
@@ -65,6 +66,7 @@ function App() {
           element={<DisplayTrendProductPage />}
         />
         <Route path="/create-new-product" element={<CreateProductPage />} />
+        <Route path="/display-product" element={<DisplayProductPage />} />
       </Routes>
 
       <Footer />

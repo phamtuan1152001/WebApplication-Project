@@ -58,6 +58,8 @@ const createProduct = (
   descriptionProduct,
   ratingProduct,
   category,
+  size,
+  color,
   tokenUser
 ) => {
   return axios.post(API_URL_CREATE_PRODUCT +
@@ -65,10 +67,12 @@ const createProduct = (
     {
       Name: nameProduct,
       Price: priceProduct,
-      Image: imgProduct,
       Descriptions: descriptionProduct,
+      Image: imgProduct,
       category: category,
       rating: ratingProduct,
+      size: size,
+      color: color
     },
     {
       headers: {

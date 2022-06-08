@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import AuthService from '../../../../services/auth.service';
 import Swal from "sweetalert2";
+import "../AdminPage.css"
 function DisplayTrendProduct() {
   const [item, setItem] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -76,7 +77,7 @@ function DisplayTrendProduct() {
         <div className="row">
           {item.map((item) => (
             <div className="card col-3" key={item.productID._id}>
-              <div className="card-body">
+              <div className="card-body card-item-content d-flex flex-column justify-content-center align-items-center">
                 <img
                   style={{ width: "200px", height: "200px" }}
                   className="card-img-top"
@@ -86,25 +87,15 @@ function DisplayTrendProduct() {
                 <h5 className="card-title">
                   {item.productID.Name.substring(0, 12)}
                 </h5>
-                <p className="card-text">
-                  Designs:{" "}
-                  {item.productID.Descriptions &&
-                    item.productID.Descriptions.Designs}
-                </p>
-                <p className="card-text">
-                  Material:{" "}
-                  {item.productID.Descriptions &&
-                    item.productID.Descriptions.Material}
-                </p>
-                <p className="card-text">
-                  Origin:{" "}
-                  {item.productID.Descriptions &&
-                    item.productID.Descriptions.Origin}
+                <p className="card-text card-descriptions">
+                  {item.productID.Descriptions.substring(0, 50)}
                 </p>
                 <input type="radio" onChange={() => setIdAdd(item._id)} />
               </div>
             </div>
           ))}
+        </div>
+        <div className='text-center'>
           <button
             className="btn btn-outline-dark mt-3 mb-3"
             onClick={handleAdd}

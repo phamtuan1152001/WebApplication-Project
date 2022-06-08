@@ -8,3 +8,7 @@
     align-items: center;
     margin: 15px 0 20px 0;
 }
+.card-item-content .card-descriptions {
+    width: 100%;
+    text-align: center;
+}

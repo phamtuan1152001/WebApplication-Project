@@ -1,18 +1,44 @@
 import React, { useState } from "react";
+import 'antd/dist/antd.css';
+import { Input, Radio, Space } from 'antd';
+
 import "../AdminPage.css";
-import axios from "axios";
+
 import AuthService from "../../../../services/auth.service";
 
+import Swal from "sweetalert2";
+
+const typeofProduct = [
+  {
+    id: 1,
+    title: "men's clothing"
+  },
+  {
+    id: 2,
+    title: "woman's clothing"
+  },
+  {
+    id: 3,
+    title: "jewelery"
+  },
+]
 function CreateProduct() {
   const user = AuthService.getCurrentUser();
   const tokenUser = user.token;
+
   const [nameProduct, setNameProduct] = useState("");
   const [priceProduct, setPriceProduct] = useState("");
   const [imgProduct, setImgProduct] = useState("");
   const [descriptionProduct, setDescriptionProduct] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState(typeofProduct[0].title);
   const [ratingProduct, setRatingProduct] = useState("");
-  // console.log(tokenUser);
+  const [size, setSize] = useState("")
+  const [color, setColor] = useState("")
+
+  const onChange = (e) => {
+    setCategory(e.target.value);
+  };
+
   const handleCreateProduct = async (e) => {
     e.preventDefault();
     AuthService.createProduct(
@@ -22,13 +48,30 @@ function CreateProduct() {
       descriptionProduct,
       ratingProduct,
       category,
+      size,
+      color,
       tokenUser
     ).then(
       () => {
-        console.log("Created successfully!");
+        // console.log("Created successfully!");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Created Succesfully!",
+          showConfirmButton: false,
+          timer: 2000,
+        });
       },
       (error) => {
-        console.log(error);
+        // console.log(error.response.data.error.message);
+        const errMessage = error.response.data.error.message;
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: `Created Unsuccesfully! ${errMessage}`,
+          showConfirmButton: false,
+          timer: 3000,
+        });
       }
     )
     // Cach nay chay dc va thanh cong khi dung fetch
@@ -87,6 +130,18 @@ function CreateProduct() {
             />
           </div>
           <div className="form-group">
+            <label htmlFor="product-image">Product description:</label>
+            <input
+              type="text"
+              className="form-control"
+              id="product-image"
+              placeholder="Enter product description"
+              onChange={(e) => {
+                setDescriptionProduct(e.target.value);
+              }}
+            />
+          </div>
+          <div className="form-group">
             <label htmlFor="product-price">Product image:</label>
             <small className="ml-2">
               Please note that it should be a link for yours image
@@ -102,16 +157,14 @@ function CreateProduct() {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="product-image">Product description:</label>
-            <input
-              type="text"
-              className="form-control"
-              id="product-image"
-              placeholder="Enter product description"
-              onChange={(e) => {
-                setDescriptionProduct(e.target.value);
-              }}
-            />
+            <label htmlFor="product-image">Product category:</label>
+            <Radio.Group onChange={onChange} value={category}>
+              <Space direction="vertical">
+                {typeofProduct.map(item => (
+                  <Radio value={item.title} key={item.id}>{item.title}</Radio>
+                ))}
+              </Space>
+            </Radio.Group>
           </div>
           <div className="form-group">
             <label htmlFor="product-image">Product rating:</label>
@@ -126,31 +179,29 @@ function CreateProduct() {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="product-image">Product category:</label>
+            <label htmlFor="product-image">Product size:</label>
             <input
               type="text"
               className="form-control"
               id="product-image"
-              placeholder="Enter product rating"
+              placeholder="Enter product size"
               onChange={(e) => {
-                setCategory(e.target.value);
+                setSize(e.target.value);
               }}
             />
           </div>
-          {/* <div className="form-group">
-            <label htmlFor="product-price">Product category:</label>
+          <div className="form-group">
+            <label htmlFor="product-image">Product color:</label>
             <input
               type="text"
               className="form-control"
-              id="product-price"
-              placeholder="Enter product price"
+              id="product-image"
+              placeholder="Enter product color"
+              onChange={(e) => {
+                setColor(e.target.value);
+              }}
             />
-          </div> */}
-          {/* <select className="form-control form-control-lg">
-            <option>men's clothing</option>
-            <option>woman's clothing</option>
-            <option>jewelery</option>
-          </select> */}
+          </div>
           <div className="form-group">
             <input
               className="btn btn-outline-dark mt-5"

@@ -27,9 +27,14 @@ function AdminPage() {
               Display Trend Product Items
             </Link>
           </div>
-          <div className="text-center mt-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div className="text-center mt-3 col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
             <Link to="/create-new-product" className="btn btn-outline-dark">
               Create A New Product
+            </Link>
+          </div>
+          <div className="text-center mt-3 col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <Link to="/display-product" className="btn btn-outline-dark">
+              Display product
             </Link>
           </div>
         </div>
