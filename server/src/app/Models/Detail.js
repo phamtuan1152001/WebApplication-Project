@@ -12,15 +12,15 @@ const details = new Schema({
         type: Schema.Types.String,
         ref: 'product' 
     },
-    amount: {
-        type: Number
-    },
-    size: {
-        type: Schema.Types.Array, 
-    },
-    color: {
-        type: Schema.Types.Array,
-    }
+    // amount: {
+    //     type: Number
+    // },
+    // size: {
+    //     type: Schema.Types.Array, 
+    // },
+    // color: {
+    //     type: Schema.Types.Array,
+    // }
 })
 
 module.exports = mongoose.model('details', details)

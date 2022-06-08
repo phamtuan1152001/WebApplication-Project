@@ -8,8 +8,11 @@ const product = new Schema({
     Price: {
         type:  Number
     },
+    // Descriptions: {
+    //     type: Object
+    // },
     Descriptions: {
-        type: Object
+        type: String
     },
     Image: {
         type: String
@@ -19,6 +22,12 @@ const product = new Schema({
     },
     rating: {
         type: Object
+    },
+    size: {
+        type: String
+    },
+    color: {
+        type: String
     }
 })
 

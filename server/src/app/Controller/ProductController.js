@@ -60,7 +60,7 @@ async function GetTrendingProduct(req, res) {
 // Create new product by admin
 async function CreateProduct(req, res) {
     //const { Name, Price, Descriptions, Image, category, size, color, amount} = req.body
-    const { Name, Price, Descriptions, Image, category} = req.body
+    const { Name, Price, Descriptions, Image, category, size, color} = req.body
 
 
     // Check product already or not
@@ -71,13 +71,13 @@ async function CreateProduct(req, res) {
     }
 
     // Create product
-    const newProduct = new products({ Name, Price, Descriptions, Image, category})
+    const newProduct = new products({ Name, Price, Descriptions, Image, category, size, color})
     newProduct.save()
 
     // Create prduct detail
-    // const pID = newProduct._id.toString()
-    // const detailProduct = new detail({pID, size, color, amount})
-    // detailProduct.save()
+    const pID = newProduct._id.toString()
+    const detailProduct = new detail({pID})
+    detailProduct.save()
   
     res.status(200).json("Created!!")
 }
@@ -166,23 +166,19 @@ async function UpdateProduct(req, res) {
         product.Descriptions = req.body.Descriptions
         product.Image = req.body.Image
         product.category = req.body.category
+        product.size = req.body.size
+        product.color = req.body.color
 
-        //Check the properties of product had already or not
-        const checkProduct = await products.findOne(
-            {
-                Name: req.body.Name,
-            })
-        if (checkProduct) res.status(401).json({error: {message: "The properties of product had already!!" }})
         product.save()
 
         // Update detail product
-        detail.findOne({pID: req.params.id}, function(err, details){
-            if (err) res.status(403).json({error: {message: "Erorrr!!"}})
-            details.size = req.body.size
-            details.color = req.body.color
-            details.amount = req.body.amount
-            details.save() 
-        })
+        // detail.findOne({pID: req.params.id}, function(err, details){
+        //     if (err) res.status(403).json({error: {message: "Erorrr!!"}})
+        //     details.size = req.body.size
+        //     details.color = req.body.color
+        //     details.amount = req.body.amount
+        //     details.save() 
+        // })
         res.status(200).json("Updated!!")
     })
 }
