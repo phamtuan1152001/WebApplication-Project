@@ -121,7 +121,7 @@ async function AddTrendingProduct(req, res) {
 
 // Delete product by admin
 function DeleteProduct(req, res) {
-    products.findOneAndRemove({ Name: req.body.Name }, function (err, product) {
+    products.findOneAndRemove({ _id: req.params.id }, function (err, product) {
         if (err) res.status(403).json({ error: { message: "The product is not already!!" } })
         detail.findOneAndRemove({ pID: product._id.toString() }, err => {
             if (err) res.status(402).json({ error: { message: "The product is not already!!" } })
@@ -166,6 +166,7 @@ async function UpdateProduct(req, res) {
         product.Descriptions = req.body.Descriptions
         product.Image = req.body.Image
         product.category = req.body.category
+        product.rating = req.body.rating
         product.size = req.body.size
         product.color = req.body.color
 
