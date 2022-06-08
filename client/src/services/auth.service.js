@@ -1,6 +1,35 @@
 import axios from "axios";
 const API_URL = "http://localhost:5000/user/";
 const API_URL_CREATE_PRODUCT = "http://localhost:5000/";
+
+const checkout = (
+  firstName,
+  lastName,
+  email,
+  address,
+  country,
+  itemCart,
+  tokenUser
+) => {
+  return axios.post(API_URL_CREATE_PRODUCT +
+    "v1/api/bill",
+    {
+      Firstname: firstName,
+      Lastname: lastName,
+      Email: email,
+      Address: address,
+      Country: country,
+      DetailID: itemCart,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${tokenUser}`,
+      }
+    }
+  )
+    .then(response => console.log(response))
+}
+
 const register = (
   Firstname,
   Lastname,
@@ -21,6 +50,7 @@ const register = (
   })
     .then(response => console.log(response))
 };
+
 const createProduct = (
   nameProduct,
   priceProduct,
@@ -48,6 +78,7 @@ const createProduct = (
   )
     .then(response => console.log(response))
 }
+
 const login = (email, password) => {
   return axios
     .post(API_URL + "signin", {
@@ -64,17 +95,22 @@ const login = (email, password) => {
       // console.log(response);
     });
 };
+
 const logout = () => {
   localStorage.removeItem("user");
 };
+
 const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem("user"));
 };
+
 const AuthService = {
+  checkout,
   register,
   login,
   logout,
   getCurrentUser,
   createProduct
 };
+
 export default AuthService;
