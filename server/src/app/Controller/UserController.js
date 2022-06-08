@@ -123,8 +123,9 @@ async function updateUser (req, res, next){
 
 async function getBill (req, res){
     const user = await User.findOne({_id: req.params.userID})
+    //console.log(user)
 
-    const bill = await Bill.find({Email: user.email})
+    const bill = await Bill.find({Email: user.email}).populate("DetailID")
 
     res.status(200).json(bill)
 }

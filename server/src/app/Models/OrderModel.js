@@ -23,7 +23,7 @@ const OrderProduct = new Schema({
     },
     DetailID: {
         type: Schema.Types.Array,
-        ref: 'details'
+        ref: 'product'
     },
     // TotalPrice: {
     //     type: Number
