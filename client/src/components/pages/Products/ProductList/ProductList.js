@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import "./ProductList.css";
 
 function ProductList({ products }) {
-  //console.log(products[0].pID);
+  // console.log(products[0].pID);
+  // console.log(products);
   return (
     <>
       {products.map((product, index) => (

@@ -88,7 +88,7 @@ function Products() {
               Jewelery
             </button>
           </div>
-          <div className="col">
+          {/* <div className="col">
             <button
               style={{ width: "200px" }}
               className="btn btn-outline-secondary"
@@ -96,7 +96,7 @@ function Products() {
             >
               Electronic
             </button>
-          </div>
+          </div> */}
         </div>
         <div className="products-list-container">
           {loading ? <Loading /> : <ProductList products={filter} />}

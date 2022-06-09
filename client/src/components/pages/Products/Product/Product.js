@@ -20,7 +20,7 @@ function Product() {
     //console.log(productsongtuan);
   };
 
-  //console.log(product);
+  // console.log(product);
 
   useEffect(() => {
     const getProduct = async () => {

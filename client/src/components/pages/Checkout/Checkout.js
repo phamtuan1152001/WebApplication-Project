@@ -9,7 +9,7 @@ function Checkout() {
   const tokenUser = user.token;
   const navigate = useNavigate();
   const state = useSelector((state) => state.handleCart);
-  console.log(state);
+  // console.log(state);
   var total = 0;
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
@@ -17,7 +17,7 @@ function Checkout() {
   const [address, setAddress] = useState("")
   const [country, setCountry] = useState("")
   const [itemCart, setItemCart] = useState(state)
-  console.log(itemCart);
+  // console.log(itemCart);
   const itemList = (item) => {
     // console.log(item);
     total = total + item.pID.Price;
